@@ -5,7 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb",
+    "standard",
     "plugin:prettier/recommended"
   ],
   "parserOptions": {
@@ -15,14 +15,16 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "import"],
+  "plugins": ["react", "import", "jsx-a11y"],
   "rules": {
+    "react/prop-types": "off",
+    "semi": "off",
     "no-console": "off",
     "no-restricted-syntax": [
       "error",
       {
-        "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(error|warn)$/]",
-        "message": "You can only call the error() and warn() functions from the console object"
+        "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(error|warn|info)$/]",
+        "message": "You can only call the error(), warn() and info() methods from the console object"
       }
     ],
     "react/react-in-jsx-scope": "off",
@@ -31,7 +33,8 @@
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
-        "assert": "either"
+        "assert": "either",
+        "some": ["nesting", "id"]
       }
     ]
   },
