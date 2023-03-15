@@ -1,16 +1,13 @@
-// import { EmmausLogo } from "../assets/images/emmaus_connect.png";
+import EmmausLogo from "../assets/images/emmaus_connect.png";
 
-function NavBar() {
+const NavBar = () => {
   return (
-    <div>
-      <div className="nav-container">
-        <p>navbar</p>
-        {/* <div className="nav__logo">
-          <img src={EmmausLogo} alt="Emmaus Logo" />
-        </div> */}
+    <div className="nav-container">
+      <div className="nav__logo">
+        <img src={EmmausLogo} alt="Emmaus Logo" />
       </div>
     </div>
   );
-}
+};
 
 export default NavBar;
