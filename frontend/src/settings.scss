@@ -1,0 +1,24 @@
+/* Colors */
+
+$green: #00ACB0;
+$blue: #233D8D;
+$red: #E43750;
+$white: #FFFFFF;
+$black: #333D40;
+
+
+/* mixins */
+
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* fonts */ 
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Fira+Sans&display=swap');
+
+    
+    $fontTitre : 'Fira Sans';
+    $fontTexte : 'Barlow';

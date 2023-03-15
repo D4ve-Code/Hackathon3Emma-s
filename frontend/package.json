@@ -17,7 +17,8 @@
     "react-dom": "^18.0.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
-    "sass": "^1.59.3"
+    "sass": "^1.59.3",
+    "template-fullstack": "file:.."
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
