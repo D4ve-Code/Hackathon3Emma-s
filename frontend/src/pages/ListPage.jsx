@@ -42,7 +42,7 @@ const ListPage = () => {
                 <td>152202</td>
                 <td>Apple</td>
                 <td>Iphone 12</td>
-                <td>DEEE</td>
+                <td>Reconditionnable</td>
                 <td>2 Go</td>
                 <td>32 Go</td>
                 <td>120000</td>
@@ -73,7 +73,7 @@ const ListPage = () => {
                 <td>121521</td>
                 <td>Huawai</td>
                 <td>P30 pro</td>
-                <td>REPARABLE</td>
+                <td>Reparable</td>
                 <td>1 Go</td>
                 <td>16 Go</td>
                 <td>140000</td>
@@ -104,7 +104,7 @@ const ListPage = () => {
                 <td>121521</td>
                 <td>Huawai</td>
                 <td>P30 pro</td>
-                <td>REPARABLE</td>
+                <td>Reparable</td>
                 <td>1 Go</td>
                 <td>16 Go</td>
                 <td>140000</td>
@@ -135,7 +135,7 @@ const ListPage = () => {
                 <td>121521</td>
                 <td>Huawai</td>
                 <td>P30 pro</td>
-                <td>REPARABLE</td>
+                <td>Reparable</td>
                 <td>1 Go</td>
                 <td>16 Go</td>
                 <td>140000</td>
@@ -166,7 +166,7 @@ const ListPage = () => {
                 <td>121521</td>
                 <td>Huawai</td>
                 <td>P30 pro</td>
-                <td>REPARABLE</td>
+                <td>Reparable</td>
                 <td>1 Go</td>
                 <td>16 Go</td>
                 <td>140000</td>
@@ -197,7 +197,7 @@ const ListPage = () => {
                 <td>121521</td>
                 <td>Huawai</td>
                 <td>P30 pro</td>
-                <td>REPARABLE</td>
+                <td>Reparable</td>
                 <td>1 Go</td>
                 <td>16 Go</td>
                 <td>140000</td>

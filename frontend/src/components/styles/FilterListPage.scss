@@ -1,9 +1,32 @@
 .filter__list__container {
     
-    width: 250px;
+    width: 190px;
     max-height: 400px;
     overflow-y: scroll;
     position: relative;
     top: -320px;
     left: 50px;
+
+    .filterOption-box {
+        padding: 10px;
+
+        .filter__Title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: $black;
+        }
+        .filter__Container {
+
+            .filterButton {
+                background: transparent;
+                border: none;
+                font-size: 15px;
+            }
+            .icon__filter {
+                color: $black;
+                font-size: 20px;
+            }
+        }
+
+    }
 }

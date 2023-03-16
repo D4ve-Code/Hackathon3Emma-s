@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import NavBarConnected from "./components/NavBarConnected";
@@ -9,6 +9,14 @@ import "./App.scss";
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isConnected === false) {
+      navigate("/");
+    }
+  }, [isConnected, navigate]);
+
   return (
     <div className="App">
       {isConnected ? (
