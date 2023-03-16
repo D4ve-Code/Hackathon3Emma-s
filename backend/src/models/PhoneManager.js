@@ -20,12 +20,11 @@ class PhoneManager extends AbstractManager {
 
   insert(phone) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (constructeur, modele,ponderation_commentaire, indice, donateur, id_emmaus_connect, info_batterie, numero_imei, processeur, sys_exploitation, taille_ecran, resolution, chargeur, operateur, couleur, localisation_id, RAM_id, Stockage_id, Antutu_id, ponderation_id, categorie_id, etat_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (constructeur, modele,ponderation_commentaire, donateur, id_emmaus_connect, info_batterie, numero_imei, processeur, sys_exploitation, taille_ecran, resolution, chargeur, operateur, couleur, localisation_id, RAM_id, Stockage_id, Antutu_id, ponderation_id, etat_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         phone.constructeur,
         phone.modele,
         phone.ponderation_commentaire,
-        phone.indice,
         phone.donateur,
         phone.id_emmaus_connect,
         phone.info_batterie,
@@ -42,7 +41,6 @@ class PhoneManager extends AbstractManager {
         phone.Stockage_id,
         phone.Antutu_id,
         phone.ponderation_id,
-        phone.categorie_id,
         phone.etat_id,
       ]
     );
@@ -50,12 +48,11 @@ class PhoneManager extends AbstractManager {
 
   update(phone) {
     return this.connection.query(
-      `UPDATE ${this.table} SET constructeur = ?, modele = ?, ponderation_commentaire = ?, indice = ?, donateur = ?, id_emmaus_connect = ?, info_batterie = ?, numero_imei = ?, processeur = ?, sys_exploitation = ?, taille_ecran = ?, resolution = ?, chargeur = ?, operateur = ?, couleur = ?, localisation_id = ?, RAM_id = ?, Stockage_id = ?, Antutu_id = ?, ponderation_id = ?, categorie_id = ?, etat_id = ?  WHERE id = ?`,
+      `UPDATE ${this.table} SET constructeur = ?, modele = ?, ponderation_commentaire = ?, donateur = ?, id_emmaus_connect = ?, info_batterie = ?, numero_imei = ?, processeur = ?, sys_exploitation = ?, taille_ecran = ?, resolution = ?, chargeur = ?, operateur = ?, couleur = ?, localisation_id = ?, RAM_id = ?, Stockage_id = ?, Antutu_id = ?, ponderation_id = ?, etat_id = ?  WHERE id = ?`,
       [
         phone.constructeur,
         phone.modele,
         phone.ponderation_commentaire,
-        phone.indice,
         phone.donateur,
         phone.id_emmaus_connect,
         phone.info_batterie,
@@ -72,7 +69,6 @@ class PhoneManager extends AbstractManager {
         phone.Stockage_id,
         phone.Antutu_id,
         phone.ponderation_id,
-        phone.categorie_id,
         phone.etat_id,
         phone.id,
       ]
