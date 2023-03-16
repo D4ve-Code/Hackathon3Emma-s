@@ -184,13 +184,12 @@ CREATE TABLE `phone` (
   KEY `fk_phone_categorie1_idx` (`categorie_id`),
   KEY `fk_phone_etat1_idx` (`etat_id`),
   CONSTRAINT `fk_phone_Antutu1` FOREIGN KEY (`Antutu_id`) REFERENCES `antutu` (`id`),
-  CONSTRAINT `fk_phone_categorie1` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`),
   CONSTRAINT `fk_phone_etat1` FOREIGN KEY (`etat_id`) REFERENCES `etat` (`id`),
   CONSTRAINT `fk_phone_localisation` FOREIGN KEY (`localisation_id`) REFERENCES `localisation` (`id`),
   CONSTRAINT `fk_phone_ponderation1` FOREIGN KEY (`ponderation_id`) REFERENCES `ponderation` (`id`),
   CONSTRAINT `fk_phone_RAM1` FOREIGN KEY (`RAM_id`) REFERENCES `ram` (`id`),
   CONSTRAINT `fk_phone_Stockage1` FOREIGN KEY (`Stockage_id`) REFERENCES `stockage` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +198,7 @@ CREATE TABLE `phone` (
 
 LOCK TABLES `phone` WRITE;
 /*!40000 ALTER TABLE `phone` DISABLE KEYS */;
-INSERT INTO `phone` VALUES (1,'SAMSUNG','Galaxy A70','text',1,'moi','111','text','111','1','android','4','17',1,'unlock','blanc',1,2,13,3,3,6,5),(4,'APPLE','Iphone 8','11',1,'moi','112','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,5,9,4),(5,'APPLE','Iphone 8','11',1,'moi','114','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,5,9,4);
+INSERT INTO `phone` VALUES (1,'SAMSUNG','Galaxy A70','text',64.5,'moi','111','text','111','1','android','4','17',1,'unlock','blanc',1,2,13,2,2,5,5),(4,'APPLE','Iphone 8','11',246.05,'moi','112','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,4,4,9,4),(5,'APPLE','Iphone 8','11',255,'moi','114','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,3,5,8,4),(6,'APPLE','Iphone 8','11',236.7,'moi','115','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,3,7,4),(7,'APPLE','Iphone 8','11',127.5,'moi','116','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,3,2,6,4),(8,'APPLE','Iphone 8','11',249.85,'moi','116','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,4,7,4),(9,'APPLE','Iphone 8','11',249.85,'moi','116','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,4,7,4);
 /*!40000 ALTER TABLE `phone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,7 +236,7 @@ DROP TABLE IF EXISTS `ram`;
 CREATE TABLE `ram` (
   `id` int NOT NULL AUTO_INCREMENT,
   `ram_nb` int NOT NULL,
-  `ram_valeur` float NOT NULL,
+  `ram_valeur` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -273,7 +272,7 @@ CREATE TABLE `stockage` (
 
 LOCK TABLES `stockage` WRITE;
 /*!40000 ALTER TABLE `stockage` DISABLE KEYS */;
-INSERT INTO `stockage` VALUES (7,16,31),(8,64,66),(9,128,0),(10,256,0),(11,512,0),(12,1000,0),(13,32,45);
+INSERT INTO `stockage` VALUES (7,16,31),(8,64,66),(9,128,75),(10,256,95),(11,512,152),(12,1000,210),(13,32,45);
 /*!40000 ALTER TABLE `stockage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,4 +309,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-16 10:09:18
+-- Dump completed on 2023-03-16 15:34:19
