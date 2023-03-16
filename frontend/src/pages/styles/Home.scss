@@ -43,6 +43,7 @@
         height: 300px;
         object-fit: cover;
         border-radius: 50px;
+        filter: drop-shadow(2px 1px 5px $black);
       }
       .sticker_list_button {
         position: relative;
@@ -59,6 +60,14 @@
         padding: 2px 10px;
       }
     }
+    .sticker_list:hover {
+      .sticker_list_image {
+        filter: drop-shadow(2px 1px 5px $blue);
+      }
+      .sticker_list_button {
+        background-color: $blue;
+      }
+    }
     .sticker_add {
       @include flex;
       flex-direction: column;
@@ -69,6 +78,7 @@
         height: 300px;
         object-fit: cover;
         border-radius: 50px;
+        filter: drop-shadow(2px 1px 5px $black);
       }
       .sticker_add_button {
         position: relative;
@@ -83,6 +93,14 @@
         width: 300px;
         height: 70px;
         padding: 2px 10px;
+      }
+    }
+    .sticker_add:hover {
+      .sticker_add_image {
+        filter: drop-shadow(2px 1px 5px $blue);
+      }
+      .sticker_add_button {
+        background-color: $blue;
       }
     }
   }
