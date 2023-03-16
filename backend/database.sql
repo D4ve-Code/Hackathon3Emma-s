@@ -27,6 +27,7 @@ CREATE TABLE `antutu` (
   `ant_min` float NOT NULL,
   `ant_max` float NOT NULL,
   `ant_valeur` float NOT NULL,
+  `intervalle` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +38,7 @@ CREATE TABLE `antutu` (
 
 LOCK TABLES `antutu` WRITE;
 /*!40000 ALTER TABLE `antutu` DISABLE KEYS */;
-INSERT INTO `antutu` VALUES (1,0,49999,40),(2,50000,99999,44),(3,100000,149999,49),(4,150000,199999,53),(5,200000,249999,57),(6,250000,299999,61),(7,300000,349999,65),(8,350000,399999,69),(9,400000,449999,73),(10,450000,499999,77),(11,500000,549999,81),(12,550000,599999,85),(13,600000,599999,89),(14,650000,649999,93),(15,700000,699999,97),(16,750000,749999,101),(17,800000,799999,105),(18,850000,849999,109),(19,900000,899999,113),(20,950000,949999,117);
+INSERT INTO `antutu` VALUES (1,0,49999,40,'entre 0 et 49999'),(2,50000,99999,44,'entre 50000 et 99999'),(3,100000,149999,49,'entre 100000 et 149999'),(4,150000,199999,53,'entre 150000 et 199999'),(5,200000,249999,57,'entre 200000 et 249999'),(6,250000,299999,61,'entre 250000 et 299999'),(7,300000,349999,65,'entre 300000 et 349999'),(8,350000,399999,69,'entre 350000 et 399999'),(9,400000,449999,73,'entre 400000 et 449999'),(10,450000,499999,77,'entre 450000 et 499999'),(11,500000,549999,81,'entre 500000 et 549999'),(12,550000,599999,85,'entre 550000 et 599999'),(13,600000,599999,89,'entre 600000 et 599999'),(14,650000,649999,93,'entre 650000 et 649999'),(15,700000,699999,97,'entre 700000 et 699999'),(16,750000,749999,101,'entre 750000 et 749999'),(17,800000,799999,105,'entre 800000 et 799999'),(18,850000,849999,109,'entre 850000 et 849999'),(19,900000,899999,113,'entre 900000 et 899999'),(20,950000,949999,117,'entre 950000 et 949999');
 /*!40000 ALTER TABLE `antutu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +175,6 @@ CREATE TABLE `phone` (
   `ponderation_id` int NOT NULL,
   `categorie_id` int NOT NULL,
   `etat_id` int NOT NULL,
-  `photo_tel` longtext,
   PRIMARY KEY (`id`,`localisation_id`,`RAM_id`,`Stockage_id`,`Antutu_id`,`ponderation_id`,`categorie_id`,`etat_id`),
   KEY `fk_phone_localisation_idx` (`localisation_id`),
   KEY `fk_phone_RAM1_idx` (`RAM_id`),
@@ -190,7 +190,7 @@ CREATE TABLE `phone` (
   CONSTRAINT `fk_phone_ponderation1` FOREIGN KEY (`ponderation_id`) REFERENCES `ponderation` (`id`),
   CONSTRAINT `fk_phone_RAM1` FOREIGN KEY (`RAM_id`) REFERENCES `ram` (`id`),
   CONSTRAINT `fk_phone_Stockage1` FOREIGN KEY (`Stockage_id`) REFERENCES `stockage` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +199,7 @@ CREATE TABLE `phone` (
 
 LOCK TABLES `phone` WRITE;
 /*!40000 ALTER TABLE `phone` DISABLE KEYS */;
-INSERT INTO `phone` VALUES (1,'SAMSUNG','Galaxy A70',NULL,NULL,NULL,'111',NULL,'111',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,2,13,3,3,6,5,'https://cdn.lesnumeriques.com/optim/produits/36/51521/samsung-galaxy-a70_c0c7689381751c63__450_400.webp');
+INSERT INTO `phone` VALUES (1,'SAMSUNG','Galaxy A70','text',1,'moi','111','text','111','1','android','4','17',1,'unlock','blanc',1,2,13,3,3,6,5),(4,'APPLE','Iphone 8','11',1,'moi','112','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,5,9,4),(5,'APPLE','Iphone 8','11',1,'moi','114','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,5,9,4);
 /*!40000 ALTER TABLE `phone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-15 22:51:18
+-- Dump completed on 2023-03-16 10:09:18
