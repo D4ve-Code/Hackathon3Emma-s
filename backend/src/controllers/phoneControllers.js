@@ -58,7 +58,7 @@ const add = (req, res) => {
   models.phone
     .insert(phone)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res.location(`/phones/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
