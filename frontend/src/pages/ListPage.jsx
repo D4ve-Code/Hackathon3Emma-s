@@ -6,20 +6,26 @@ import FilterListPage from "@components/FilterListPage";
 const ListPage = ({ dataPhones }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
   const [filteredItems, setFilteredItems] = useState(dataPhones);
+  const [searchId, setSearchId] = useState("");
 
-  const applyFilters = (dataPhones, selectedBrands) => {
+  const applyFilters = (dataPhones, selectedBrands, searchId) => {
     let filteredItems = dataPhones;
     if (selectedBrands.size > 0) {
       filteredItems = filteredItems.filter((item) =>
         selectedBrands.has(item.constructeur)
       );
     }
+    if (searchId) {
+      filteredItems = filteredItems.filter((item) =>
+        item.id_emmaus_connect.toString().startsWith(searchId)
+      );
+    }
     return filteredItems;
   };
   useEffect(() => {
-    const newFilteredItems = applyFilters(dataPhones, selectedBrands);
+    const newFilteredItems = applyFilters(dataPhones, selectedBrands, searchId);
     setFilteredItems(newFilteredItems);
-  }, [selectedBrands, dataPhones]);
+  }, [selectedBrands, dataPhones, searchId]);
 
   return (
     <>
@@ -36,9 +42,10 @@ const ListPage = ({ dataPhones }) => {
             type="number"
             placeholder="Entrer un id à 6 chiffres"
             className="listPage__input"
-            onChange={handleSearchId}
+            value={searchId}
+            onChange={(e) => setSearchId(e.target.value)}
           />
-          <FiSearch className="btn_seacrh" onClick={() => searchId} />
+          <FiSearch className="btn_seacrh" />
         </div>
         <div className="listPage__container__list">
           {filteredItems.map((phone) => (
