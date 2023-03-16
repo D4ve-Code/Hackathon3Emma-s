@@ -1,12 +1,12 @@
-import EmmausLogo from "../assets/images/emmaus_connect.png";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
-import { FcKey } from "react-icons/fc";
+import { AiOutlineUnlock } from "react-icons/ai";
 import { useState } from "react";
-import ConnectedModal from "./ConnectedModal";
+import LogoutModal from "./LogoutModal";
+import EmmausLogo from "../assets/images/emmaus_connect.png";
 
 const NavBar = ({ setIsConnected }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const [logoutModals, setLogoutModals] = useState(false);
 
   return (
     <div>
@@ -24,16 +24,19 @@ const NavBar = ({ setIsConnected }) => {
           </div>
           <div className="btn__container">
             <button
-              className="nav__button__login"
+              className="nav__button__logout"
               onClick={() => {
-                setOpenModal(true);
+                setLogoutModals(true);
               }}
             >
-              Connexion espace bénévole <FcKey />
+              espace bénévole n°15121{" "}
+              <span className="lock">
+                <AiOutlineUnlock />
+              </span>
             </button>
-            {openModal && (
-              <ConnectedModal
-                closeModal={setOpenModal}
+            {logoutModals && (
+              <LogoutModal
+                closeModal={setLogoutModals}
                 setIsConnected={setIsConnected}
               />
             )}
