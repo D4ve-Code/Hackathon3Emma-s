@@ -2,6 +2,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
 import { AiOutlineUnlock } from "react-icons/ai";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import LogoutModal from "./LogoutModal";
 import EmmausLogo from "../assets/images/emmaus_connect.png";
 
@@ -44,7 +45,10 @@ const NavBar = ({ setIsConnected }) => {
         </div>
       </div>
       <div className="nav__logo">
-        <img src={EmmausLogo} alt="Emmaus_Logo" />
+        <Link to="/">
+          <img src={EmmausLogo} alt="Emmaus_Logo" />
+          <p>Cliquer ici pour retouner à l'acceuil</p>
+        </Link>
       </div>
     </div>
   );

@@ -1,10 +1,18 @@
+/* settings */
 @import "./settings.scss";
+
+/* components */
 @import "./components/styles/NavBar.scss";
 @import "./components/styles/NavBarConnected.scss";
 @import "./components/styles/ConnectModal.scss";
 @import "./components/styles/LogoutModal.scss";
-@import "./pages/styles/Home.scss";
+@import "./components/styles/FilterListPage.scss";
 
+/* pages */
+@import "./pages/styles/Home.scss";
+@import "./pages/styles/ListPage.scss";
+
+/* ALL */
 * {
   margin: 0;
   padding: 0;
@@ -30,5 +38,18 @@ ul {
 }
 
 a {
-  text-align: none;
+  text-decoration: none;
+  color: $black;
+}
+
+::-webkit-scrollbar {
+  background: $white;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: $green;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+  border-radius: 10px;
 }

@@ -48,8 +48,32 @@ class PhoneManager extends AbstractManager {
 
   update(phone) {
     return this.connection.query(
-      `update ${this.table} set title = ? where id = ?`,
-      [phone.title, phone.id]
+      `UPDATE ${this.table} SET constructeur = ?, modele = ?, ponderation_commentaire = ?, indice = ?, donateur = ?, id_emmaus_connect = ?, info_batterie = ?, numero_imei = ?, processeur = ?, sys_exploitation = ?, taille_ecran = ?, resolution = ?, chargeur = ?, operateur = ?, couleur = ?, localisation_id = ?, RAM_id = ?, Stockage_id = ?, Antutu_id = ?, ponderation_id = ?, categorie_id = ?, etat_id = ?  WHERE id = ?`,
+      [
+        phone.constructeur,
+        phone.modele,
+        phone.ponderation_commentaire,
+        phone.indice,
+        phone.donateur,
+        phone.id_emmaus_connect,
+        phone.info_batterie,
+        phone.numero_imei,
+        phone.processeur,
+        phone.sys_exploitation,
+        phone.taille_ecran,
+        phone.resolution,
+        phone.chargeur,
+        phone.operateur,
+        phone.couleur,
+        phone.localisation_id,
+        phone.RAM_id,
+        phone.Stockage_id,
+        phone.Antutu_id,
+        phone.ponderation_id,
+        phone.categorie_id,
+        phone.etat_id,
+        phone.id,
+      ]
     );
   }
 }
