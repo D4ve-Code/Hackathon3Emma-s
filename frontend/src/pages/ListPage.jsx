@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 
 const ListPage = ({ dataPhones }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
+  const [selectedEtat, setSelectedEtat] = useState(new Set());
+  const [selectedCategory, setSelectedCategory] = useState(new Set());
+  const [selectedCity, setSelectedCity] = useState(new Set());
   const [filteredItems, setFilteredItems] = useState(dataPhones);
 
   const applyFilters = (dataPhones, selectedBrands) => {
@@ -14,12 +17,39 @@ const ListPage = ({ dataPhones }) => {
         selectedBrands.has(item.constructeur)
       );
     }
+    if (selectedEtat.size > 0) {
+      filteredItems = filteredItems.filter((etat) =>
+        selectedEtat.has(etat.statut)
+      );
+    }
+    if (selectedCategory.size > 0) {
+      filteredItems = filteredItems.filter((categorie) =>
+        selectedCategory.has(categorie.categorie_name)
+      );
+    }
+    if (selectedCity.size > 0) {
+      filteredItems = filteredItems.filter((city) =>
+        selectedCity.has(city.ville)
+      );
+    }
     return filteredItems;
   };
   useEffect(() => {
-    const newFilteredItems = applyFilters(dataPhones, selectedBrands);
+    const newFilteredItems = applyFilters(
+      dataPhones,
+      selectedBrands,
+      selectedEtat,
+      selectedCategory,
+      selectedCity
+    );
     setFilteredItems(newFilteredItems);
-  }, [selectedBrands, dataPhones]);
+  }, [
+    selectedBrands,
+    dataPhones,
+    selectedEtat,
+    selectedCategory,
+    selectedCity,
+  ]);
 
   return (
     <>
@@ -80,6 +110,12 @@ const ListPage = ({ dataPhones }) => {
           className="filter__list__page"
           selectedBrands={selectedBrands}
           setSelectedBrands={setSelectedBrands}
+          selectedEtat={selectedEtat}
+          setSelectedEtat={setSelectedEtat}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedCity={selectedCity}
+          setSelectedCity={setSelectedCity}
         />
       </div>
     </>
