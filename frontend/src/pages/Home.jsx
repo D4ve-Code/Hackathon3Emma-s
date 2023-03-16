@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import PlayerVideo from "../components/PlayerVideo";
+import PlayerVideoHome from "../components/PlayerVideoHome";
 
 import imageStickerAdd from "../assets/images/img_4436-paris-point-daccueil-et-benevoles-mb-francois-silvestre-de-sacy.jpg";
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
@@ -51,7 +51,7 @@ const Home = ({ isConnected }) => {
                 Voir les téléphones disponibles
               </button>
             </Link>
-            <Link className="sticker_add" to="/addpage">
+            <Link className="sticker_add" to="/formpage">
               <img
                 className="sticker_add_image"
                 src={imageStickerAdd}
@@ -96,7 +96,7 @@ const Home = ({ isConnected }) => {
         {faqDisplay && (
           <div className="faq_infos">
             <div className="video_faq">
-              <PlayerVideo />
+              <PlayerVideoHome />
             </div>
             <p>
               Si vous êtes coincés, vous pouvez nous appeler au{" "}

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import NavBarConnected from "./components/NavBarConnected";
 import ListPage from "./pages/ListPage";
+import FormPage from "./pages/FormPage";
 
 import "./App.scss";
 
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home isConnected={isConnected} />} />
         <Route path="/listpage" element={<ListPage />} />
+        <Route path="/formpage" element={<FormPage />} />
       </Routes>
     </div>
   );

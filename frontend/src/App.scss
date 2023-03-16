@@ -2,15 +2,16 @@
 @import "./settings.scss";
 
 /* components */
+@import "./components/styles/ConnectModal.scss";
+@import "./components/styles/FilterListPage.scss";
+@import "./components/styles/LogoutModal.scss";
 @import "./components/styles/NavBar.scss";
 @import "./components/styles/NavBarConnected.scss";
-@import "./components/styles/ConnectModal.scss";
-@import "./components/styles/LogoutModal.scss";
-@import "./components/styles/FilterListPage.scss";
 
 /* pages */
-@import "./pages/styles/Home.scss";
+@import "./pages//styles/FormPage.scss";
 @import "./pages/styles/ListPage.scss";
+@import "./pages/styles/Home.scss";
 
 /* ALL */
 * {
