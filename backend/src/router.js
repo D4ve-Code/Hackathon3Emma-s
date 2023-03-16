@@ -11,5 +11,6 @@ router.post("/phones", phoneControllers.add);
 // router.put("/items/:id", itemControllers.edit);
 // router.post("/items", itemControllers.add);
 // router.delete("/items/:id", itemControllers.destroy);
+router.put("/phones/:id", phoneControllers.edit);
 
 module.exports = router;
