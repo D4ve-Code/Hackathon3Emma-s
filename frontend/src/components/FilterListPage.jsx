@@ -1,58 +1,47 @@
 import { useState } from "react";
 
 const FilterListPage = () => {
-  const [activeFilterGenre] = useState("Tous");
-  const [showDropdownGenre, setShowDropdownGenre] = useState(false);
+  const [activeFilterMarque] = useState("Tous");
+  const [showDropdownMarque, setShowDropdownMarque] = useState(false);
 
-  // const handleSelectGenre = (filterGenre) => {
-  //   setActiveFilterGenre(filterGenre);
-  //   setShowDropdownGenre(false);
-  // };
+  const [activeFilterModel] = useState("Tous");
+  const [showDropdownModel, setShowDropdownModel] = useState(false);
 
-  //   const filtersGenre = [
-  //     "Tous",
-  //     ...catalog.reduce((acc, curr) => {
-  //       const genres = curr.genres.split(",");
-  //       genres.forEach((genre) => {
-  //         if (!acc.includes(genre.trim())) {
-  //           acc.push(genre.trim());
-  //         }
-  //       });
-  //       return acc;
-  //     }, []),
-  //   ].sort((a, b) => {
-  //     if (a === "Tous") {
-  //       return -1;
-  //     } else if (b === "Tous") {
-  //       return 1;
-  //     } else {
-  //       return a.localeCompare(b);
-  //     }
-  //   });
+  const [activeFilterEtat] = useState("Tous");
+  const [showDropdownEtat, setShowDropdownEtat] = useState(false);
 
-  //   const filtersEtat = [
-  //     "Tous",
-  //     ...catalog.reduce((acc, curr) => {
-  //       const etat = curr.etat.split(",");
-  //       etat.forEach((etat) => {
-  //         if (!acc.includes(etat.trim())) {
-  //           acc.push(etat.trim());
-  //         }
-  //       });
-  //       return acc;
-  //     }, []),
-  //   ].sort((a, b) => {
-  //     if (a === "Tous") {
-  //       return -1;
-  //     } else if (b === "Tous") {
-  //       return 1;
-  //     } else {
-  //       return a.localeCompare(b);
-  //     }
-  //   });
+  const [activeFilterRam] = useState("Tous");
+  const [showDropdownRam, setShowDropdownRam] = useState(false);
 
-  const handleDropdownGenreToggle = () => {
-    setShowDropdownGenre(!showDropdownGenre);
+  const [activeFilterStockage] = useState("Tous");
+  const [showDropdownStockage, setShowDropdownStockage] = useState(false);
+
+  const [activeFilterCategory] = useState("Tous");
+  const [showDropdownCategory, setShowDropdownCategory] = useState(false);
+
+  const [activeFilterCity] = useState("Tous");
+  const [showDropdownCity, setShowDropdownCity] = useState(false);
+
+  const handleDropdownMarqueToggle = () => {
+    setShowDropdownMarque(!showDropdownMarque);
+  };
+  const handleDropdownModelToggle = () => {
+    setShowDropdownModel(!showDropdownModel);
+  };
+  const handleDropdownEtatToggle = () => {
+    setShowDropdownEtat(!showDropdownEtat);
+  };
+  const handleDropdownRamToggle = () => {
+    setShowDropdownRam(!showDropdownRam);
+  };
+  const handleDropdownStockageToggle = () => {
+    setShowDropdownStockage(!showDropdownStockage);
+  };
+  const handleDropdownCategoryToggle = () => {
+    setShowDropdownCategory(!showDropdownCategory);
+  };
+  const handleDropdownCityToggle = () => {
+    setShowDropdownCity(!showDropdownCity);
   };
 
   return (
@@ -60,14 +49,17 @@ const FilterListPage = () => {
       <div className="filterOption-box">
         <div className="filter__Title">Marque :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownGenreToggle}>
-            <div>{activeFilterGenre}</div> <div>&#x25BE;</div>
+          <button className="filterButton" onClick={handleDropdownMarqueToggle}>
+            <div>{activeFilterMarque}</div>{" "}
+            <div className="icon__filter">&#x25BE;</div>
           </button>
-          {showDropdownGenre && (
+          {showDropdownMarque && (
             <ul className="filterDropdown">
-              <li className="filterDropdownItem">modele</li>
-              <li className="filterDropdownItem">marque</li>
-              <li className="filterDropdownItem">couleur</li>
+              <li className="filterDropdownItem">
+                <label htmlFor="check" className="label__filter">
+                  <input type="checkbox" id="check" /> Apple
+                </label>
+              </li>
             </ul>
           )}
         </div>
@@ -75,14 +67,17 @@ const FilterListPage = () => {
       <div className="filterOption-box">
         <div className="filter__Title">Modèle :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownGenreToggle}>
-            <div>{activeFilterGenre}</div> <div>&#x25BE;</div>
+          <button className="filterButton" onClick={handleDropdownModelToggle}>
+            <div>{activeFilterModel}</div>{" "}
+            <div className="icon__filter">&#x25BE;</div>
           </button>
-          {showDropdownGenre && (
+          {showDropdownModel && (
             <ul className="filterDropdown">
-              <li className="filterDropdownItem">modele</li>
-              <li className="filterDropdownItem">marque</li>
-              <li className="filterDropdownItem">couleur</li>
+              <li className="filterDropdownItem">
+                <label htmlFor="check" className="label__filter">
+                  <input type="checkbox" id="check" /> Iphone 12
+                </label>
+              </li>
             </ul>
           )}
         </div>
@@ -90,14 +85,17 @@ const FilterListPage = () => {
       <div className="filterOption-box">
         <div className="filter__Title">Etat :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownGenreToggle}>
-            <div>{activeFilterGenre}</div> <div>&#x25BE;</div>
+          <button className="filterButton" onClick={handleDropdownEtatToggle}>
+            <div>{activeFilterEtat}</div>{" "}
+            <div className="icon__filter">&#x25BE;</div>
           </button>
-          {showDropdownGenre && (
+          {showDropdownEtat && (
             <ul className="filterDropdown">
-              <li className="filterDropdownItem">modele</li>
-              <li className="filterDropdownItem">marque</li>
-              <li className="filterDropdownItem">couleur</li>
+              <li className="filterDropdownItem">
+                <label htmlFor="check" className="label__filter">
+                  <input type="checkbox" id="check" /> DEEE
+                </label>
+              </li>
             </ul>
           )}
         </div>
@@ -105,14 +103,17 @@ const FilterListPage = () => {
       <div className="filterOption-box">
         <div className="filter__Title">RAM :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownGenreToggle}>
-            <div>{activeFilterGenre}</div> <div>&#x25BE;</div>
+          <button className="filterButton" onClick={handleDropdownRamToggle}>
+            <div>{activeFilterRam}</div>{" "}
+            <div className="icon__filter">&#x25BE;</div>
           </button>
-          {showDropdownGenre && (
+          {showDropdownRam && (
             <ul className="filterDropdown">
-              <li className="filterDropdownItem">modele</li>
-              <li className="filterDropdownItem">marque</li>
-              <li className="filterDropdownItem">couleur</li>
+              <li className="filterDropdownItem">
+                <label htmlFor="check" className="label__filter">
+                  <input type="checkbox" id="check" /> 1 Go
+                </label>
+              </li>
             </ul>
           )}
         </div>
@@ -120,14 +121,20 @@ const FilterListPage = () => {
       <div className="filterOption-box">
         <div className="filter__Title">Stockage :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownGenreToggle}>
-            <div>{activeFilterGenre}</div> <div>&#x25BE;</div>
+          <button
+            className="filterButton"
+            onClick={handleDropdownStockageToggle}
+          >
+            <div>{activeFilterStockage}</div>{" "}
+            <div className="icon__filter">&#x25BE;</div>
           </button>
-          {showDropdownGenre && (
+          {showDropdownStockage && (
             <ul className="filterDropdown">
-              <li className="filterDropdownItem">modele</li>
-              <li className="filterDropdownItem">marque</li>
-              <li className="filterDropdownItem">couleur</li>
+              <li className="filterDropdownItem">
+                <label htmlFor="check" className="label__filter">
+                  <input type="checkbox" id="check" /> 32 Go
+                </label>
+              </li>
             </ul>
           )}
         </div>
@@ -135,14 +142,20 @@ const FilterListPage = () => {
       <div className="filterOption-box">
         <div className="filter__Title">Catégorie :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownGenreToggle}>
-            <div>{activeFilterGenre}</div> <div>&#x25BE;</div>
+          <button
+            className="filterButton"
+            onClick={handleDropdownCategoryToggle}
+          >
+            <div>{activeFilterCategory}</div>{" "}
+            <div className="icon__filter">&#x25BE;</div>
           </button>
-          {showDropdownGenre && (
+          {showDropdownCategory && (
             <ul className="filterDropdown">
-              <li className="filterDropdownItem">modele</li>
-              <li className="filterDropdownItem">marque</li>
-              <li className="filterDropdownItem">couleur</li>
+              <li className="filterDropdownItem">
+                <label htmlFor="check" className="label__filter">
+                  <input type="checkbox" id="check" /> 3 - B
+                </label>
+              </li>
             </ul>
           )}
         </div>
@@ -150,14 +163,17 @@ const FilterListPage = () => {
       <div className="filterOption-box">
         <div className="filter__Title">Ville :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownGenreToggle}>
-            <div>{activeFilterGenre}</div> <div>&#x25BE;</div>
+          <button className="filterButton" onClick={handleDropdownCityToggle}>
+            <div>{activeFilterCity}</div>{" "}
+            <div className="icon__filter">&#x25BE;</div>
           </button>
-          {showDropdownGenre && (
+          {showDropdownCity && (
             <ul className="filterDropdown">
-              <li className="filterDropdownItem">modele</li>
-              <li className="filterDropdownItem">marque</li>
-              <li className="filterDropdownItem">couleur</li>
+              <li className="filterDropdownItem">
+                <label htmlFor="check" className="label__filter">
+                  <input type="checkbox" id="check" /> Reims
+                </label>
+              </li>
             </ul>
           )}
         </div>
