@@ -4,6 +4,7 @@ import { GrMail } from "react-icons/gr";
 import { FcKey } from "react-icons/fc";
 import { useState } from "react";
 import ConnectedModal from "./ConnectedModal";
+import { Link } from "react-router-dom";
 
 const NavBar = ({ setIsConnected }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -41,7 +42,10 @@ const NavBar = ({ setIsConnected }) => {
         </div>
       </div>
       <div className="nav__logo">
-        <img src={EmmausLogo} alt="Emmaus_Logo" />
+        <Link to="/">
+          <img src={EmmausLogo} alt="Emmaus_Logo" />
+          <p>Cliquer ici pour retouner à l'acceuil</p>
+        </Link>
       </div>
     </div>
   );

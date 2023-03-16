@@ -1,6 +1,6 @@
 const LogoutModal = ({ closeModal, setIsConnected }) => {
   const handleLogout = () => {
-    setIsConnected(true);
+    setIsConnected(false);
   };
 
   return (
