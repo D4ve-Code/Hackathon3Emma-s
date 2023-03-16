@@ -29,7 +29,7 @@
         button {
           background-color: transparent;
           color: $green;
-          font-family: $fontText;
+          font-family: $fontTexte;
           border: none;
           font-size: 25px;
           cursor: pointer;
@@ -55,7 +55,7 @@
         label {
           display: flex;
           flex-direction: column;
-          font-family: $fontText;
+          font-family: $fontTexte;
           color: $white;
           font-size: 20px;
           padding-bottom: 25px;
@@ -72,7 +72,7 @@
             border-radius: 50px;
             padding-left: 15px;
             font-size: 20px;
-            font-family: $fontText;
+            font-family: $fontTexte;
             color: $green;
             background-color: $white;
           }
@@ -87,7 +87,7 @@
             width: 150px;
             height: 50px;
             margin-top: 50px;
-            font-family: $fontText;
+            font-family: $fontTexte;
             color: $white;
             background-color: $green;
             border: none;
