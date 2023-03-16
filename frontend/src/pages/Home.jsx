@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+import PlayerVideo from "../components/PlayerVideo";
 
 import imageStickerAdd from "../assets/images/img_4436-paris-point-daccueil-et-benevoles-mb-francois-silvestre-de-sacy.jpg";
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
+import { BiDownArrow, BiLeftArrow } from "react-icons/bi";
+// import { element } from "prop-types";
 
 const Home = () => {
+  // const handleClickBot = (elementRef) => {
+  //   window.scrollTo({
+  //     top: elementRef.current.offsetTop,
+  //     behavior: "smooth",
+  //   });
+  // };
+
+  const [faqDisplay, setFaqDisplay] = useState(false);
+
   return (
     <div className="home_page">
       <div className="page_text">
@@ -45,7 +58,37 @@ const Home = () => {
           <button className="sticker_add_button">Ajouter un téléphone</button>
         </Link>
       </div>
-      <div className="faq">FAQ</div>
+      <div className="faq">
+        <div className="faq_title">
+          <h2>
+            <span>Besoin d'aide ?</span> Vous pouvez cliquer sur la flèche pour
+            voir une vidéo explicative !
+          </h2>
+          {faqDisplay ? (
+            <BiDownArrow
+              className="faq_arrow"
+              onClick={() => setFaqDisplay(!faqDisplay)}
+            />
+          ) : (
+            <BiLeftArrow
+              className="faq_arrow"
+              onClick={() => setFaqDisplay(!faqDisplay)}
+            />
+          )}
+        </div>
+        {faqDisplay && (
+          <div className="faq_infos">
+            <div className="video_faq">
+              <PlayerVideo />
+            </div>
+            <p>
+              Si vous êtes coincés, vous pouvez nous appeler au{" "}
+              <span>01 27 54 98 36</span> ou nous contacter à{" "}
+              <span>emmaus-contact@contact.org</span>
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
