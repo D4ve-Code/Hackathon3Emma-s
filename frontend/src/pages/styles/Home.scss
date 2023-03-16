@@ -122,16 +122,16 @@
       position: relative;
       .banniere {
         position: relative;
-        width: 99.8vw;
+        width: 99.7vw;
         height: 700px;
-        top: 150px;
+        top: 110px;
         object-fit: cover;
       }
       .span_description__logout {
         font-family: $fontTexte;
         font-size: 65px;
         position: absolute;
-        left: 550px;
+        left: 250px;
         top: 100px;
         color: $white;
         text-shadow: 1px 1px 1px $black;
@@ -141,7 +141,10 @@
   .faq {
     margin-top: 230px;
     background-color: #f7f7f7;
-    height: 50vh;
+    height: 51vh;
+    position: relative;
+    z-index: 1;
+    bottom: 90px;
     .faq_title {
       display: flex;
       align-items: center;

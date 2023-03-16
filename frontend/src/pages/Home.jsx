@@ -73,7 +73,7 @@ const Home = ({ isConnected }) => {
           <div className="page_description__logout">
             <img className="banniere" src={banniere} alt="image" />
             <span className="span_description__logout">
-              Vous devez être connecté pour accéder à cette page !
+              Vous devez être connectés pour accéder à cette page !
             </span>
           </div>
         </div>

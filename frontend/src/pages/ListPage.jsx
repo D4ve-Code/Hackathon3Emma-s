@@ -2,6 +2,8 @@ import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import { FiSearch } from "react-icons/fi";
 import FilterListPage from "@components/FilterListPage";
 import { useState, useEffect } from "react";
+import { BiDownArrow, BiLeftArrow } from "react-icons/bi";
+import PlayerVideoList from "../components/PlayerVideoList";
 
 const ListPage = ({ dataPhones }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
@@ -9,6 +11,7 @@ const ListPage = ({ dataPhones }) => {
   const [selectedCategory, setSelectedCategory] = useState(new Set());
   const [selectedCity, setSelectedCity] = useState(new Set());
   const [filteredItems, setFilteredItems] = useState(dataPhones);
+  const [faqDisplay, setFaqDisplay] = useState(false);
 
   const applyFilters = (dataPhones, selectedBrands) => {
     let filteredItems = dataPhones;
@@ -117,6 +120,37 @@ const ListPage = ({ dataPhones }) => {
           selectedCity={selectedCity}
           setSelectedCity={setSelectedCity}
         />
+        <div className="faq">
+          <div className="faq_title">
+            <h2>
+              <span>Besoin d'aide ?</span> <br /> N'hésitez pas à cliquer sur la
+              flèche pour en savoir plus !
+            </h2>
+            {faqDisplay ? (
+              <BiDownArrow
+                className="faq_arrow"
+                onClick={() => setFaqDisplay(!faqDisplay)}
+              />
+            ) : (
+              <BiLeftArrow
+                className="faq_arrow"
+                onClick={() => setFaqDisplay(!faqDisplay)}
+              />
+            )}
+          </div>
+          {faqDisplay && (
+            <div className="faq_infos">
+              <div className="video_faq">
+                <PlayerVideoList />
+              </div>
+              <p>
+                Si vous êtes coincés, vous pouvez nous appeler au{" "}
+                <span>01 27 54 98 36</span> ou nous contacter à{" "}
+                <span>emmaus-contact@contact.org</span>
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
