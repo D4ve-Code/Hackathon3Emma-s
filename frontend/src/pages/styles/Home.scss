@@ -86,7 +86,57 @@
       }
     }
   }
+  .page_description__logout {
+    height: 540px;
+    display: flex;
+    align-items: center;
+    .span_description__logout {
+      font-family: $fontTexte;
+      font-size: 40px;
+    }
+  }
   .faq {
-    background-color: $blue;
+    padding-top: 100px;
+    .faq_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      h2 {
+        font-family: $fontTitre;
+        color: $black;
+        span {
+          color: $green;
+          font-size: 40px;
+        }
+      }
+      .faq_arrow {
+        scale: 2;
+        color: $green;
+      }
+      .faq_arrow:hover {
+        color: $red;
+      }
+    }
+    .faq_infos {
+      @include flex;
+      flex-direction: column;
+      height: 100px;
+      padding-top: 250px;
+      .video_faq {
+        width: 600px;
+        height: 600px;
+      }
+      p {
+        padding-top: 20px;
+        font-family: $fontTexte;
+        font-size: 24px;
+        color: $black;
+        span {
+          color: $blue;
+          font: bold;
+          font-size: 30px;
+        }
+      }
+    }
   }
 }

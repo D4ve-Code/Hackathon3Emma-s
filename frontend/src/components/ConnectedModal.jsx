@@ -1,7 +1,7 @@
 const ConnectModal = ({ closeModal, setIsConnected }) => {
   const handleConnexion = (e) => {
     e.preventDefault();
-    setIsConnected(false);
+    setIsConnected(true);
     closeModal(false);
   };
   return (
