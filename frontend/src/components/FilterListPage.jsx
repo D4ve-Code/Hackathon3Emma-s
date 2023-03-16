@@ -1,25 +1,12 @@
 import { useState } from "react";
 
-const FilterListPage = () => {
-  const [activeFilterMarque] = useState("Tous");
+const FilterListPage = ({ setSelectedBrands, selectedBrands }) => {
   const [showDropdownMarque, setShowDropdownMarque] = useState(false);
-
-  const [activeFilterModel] = useState("Tous");
   const [showDropdownModel, setShowDropdownModel] = useState(false);
-
-  const [activeFilterEtat] = useState("Tous");
   const [showDropdownEtat, setShowDropdownEtat] = useState(false);
-
-  const [activeFilterRam] = useState("Tous");
   const [showDropdownRam, setShowDropdownRam] = useState(false);
-
-  const [activeFilterStockage] = useState("Tous");
   const [showDropdownStockage, setShowDropdownStockage] = useState(false);
-
-  const [activeFilterCategory] = useState("Tous");
   const [showDropdownCategory, setShowDropdownCategory] = useState(false);
-
-  const [activeFilterCity] = useState("Tous");
   const [showDropdownCity, setShowDropdownCity] = useState(false);
 
   const handleDropdownMarqueToggle = () => {
@@ -44,32 +31,111 @@ const FilterListPage = () => {
     setShowDropdownCity(!showDropdownCity);
   };
 
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+
+    if (value === "Tous") {
+      if (checked) {
+        setSelectedBrands(new Set());
+      } else {
+        setSelectedBrands(
+          new Set(["APPLE", "SAMSUNG", "XIAOMI", "GOOGLE", "NOKIA"])
+        );
+      }
+    } else {
+      const updatedBrands = new Set(selectedBrands);
+      if (checked) {
+        updatedBrands.add(value);
+      } else {
+        updatedBrands.delete(value);
+      }
+      setSelectedBrands(updatedBrands);
+    }
+  };
+
   return (
     <div className="filter__list__container">
       <div className="filterOption-box">
         <div className="filter__Title">Marque :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownMarqueToggle}>
-            <div>{activeFilterMarque}</div>{" "}
-            <div className="icon__filter">&#x25BE;</div>
-          </button>
+          <div className="filterDiv">
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="check"
+                value="Tous"
+                checked={selectedBrands.size === 0}
+                onChange={handleCheckboxChange}
+              />
+              <p>Tous</p>
+            </div>
+            <div className="icon__filter" onClick={handleDropdownMarqueToggle}>
+              &#x25BE;
+            </div>
+          </div>
           {showDropdownMarque && (
-            <ul className="filterDropdown">
-              <li className="filterDropdownItem">
-                <label htmlFor="check" className="label__filter">
-                  <input type="checkbox" id="check" /> Apple
-                </label>
-              </li>
-            </ul>
+            <div className="filterDropdown">
+              <div className="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="check"
+                  value="APPLE"
+                  checked={selectedBrands.has("APPLE")}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="check">Apple</label>
+              </div>
+
+              <div className="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="check"
+                  value="GOOGLE"
+                  checked={selectedBrands.has("GOOGLE")}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="check">Google</label>
+              </div>
+              <div className="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="check"
+                  value="NOKIA"
+                  checked={selectedBrands.has("NOKIA")}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="check">Nokia</label>
+              </div>
+              <div className="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="check"
+                  value="SAMSUNG"
+                  checked={selectedBrands.has("SAMSUNG")}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="check">Samsung</label>
+              </div>
+              <div className="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="check"
+                  value="XIAOMI"
+                  checked={selectedBrands.has("XIAOMI")}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="check">Xiaomi</label>
+              </div>
+            </div>
           )}
         </div>
       </div>
+
       <div className="filterOption-box">
         <div className="filter__Title">Modèle :</div>
         <div className="filter__Container">
           <button className="filterButton" onClick={handleDropdownModelToggle}>
-            <div>{activeFilterModel}</div>{" "}
-            <div className="icon__filter">&#x25BE;</div>
+            <div></div> <div className="icon__filter">&#x25BE;</div>
           </button>
           {showDropdownModel && (
             <ul className="filterDropdown">
@@ -86,8 +152,7 @@ const FilterListPage = () => {
         <div className="filter__Title">Etat :</div>
         <div className="filter__Container">
           <button className="filterButton" onClick={handleDropdownEtatToggle}>
-            <div>{activeFilterEtat}</div>{" "}
-            <div className="icon__filter">&#x25BE;</div>
+            <div></div> <div className="icon__filter">&#x25BE;</div>
           </button>
           {showDropdownEtat && (
             <ul className="filterDropdown">
@@ -104,8 +169,7 @@ const FilterListPage = () => {
         <div className="filter__Title">RAM :</div>
         <div className="filter__Container">
           <button className="filterButton" onClick={handleDropdownRamToggle}>
-            <div>{activeFilterRam}</div>{" "}
-            <div className="icon__filter">&#x25BE;</div>
+            <div></div> <div className="icon__filter">&#x25BE;</div>
           </button>
           {showDropdownRam && (
             <ul className="filterDropdown">
@@ -125,8 +189,7 @@ const FilterListPage = () => {
             className="filterButton"
             onClick={handleDropdownStockageToggle}
           >
-            <div>{activeFilterStockage}</div>{" "}
-            <div className="icon__filter">&#x25BE;</div>
+            <div></div> <div className="icon__filter">&#x25BE;</div>
           </button>
           {showDropdownStockage && (
             <ul className="filterDropdown">
@@ -146,8 +209,7 @@ const FilterListPage = () => {
             className="filterButton"
             onClick={handleDropdownCategoryToggle}
           >
-            <div>{activeFilterCategory}</div>{" "}
-            <div className="icon__filter">&#x25BE;</div>
+            <div></div> <div className="icon__filter">&#x25BE;</div>
           </button>
           {showDropdownCategory && (
             <ul className="filterDropdown">
@@ -164,8 +226,7 @@ const FilterListPage = () => {
         <div className="filter__Title">Ville :</div>
         <div className="filter__Container">
           <button className="filterButton" onClick={handleDropdownCityToggle}>
-            <div>{activeFilterCity}</div>{" "}
-            <div className="icon__filter">&#x25BE;</div>
+            <div></div> <div className="icon__filter">&#x25BE;</div>
           </button>
           {showDropdownCity && (
             <ul className="filterDropdown">
