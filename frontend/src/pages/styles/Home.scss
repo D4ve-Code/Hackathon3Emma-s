@@ -8,11 +8,12 @@
     .page_title {
       color: $green;
       font-family: $fontTitre;
-      font-size: 30px;
-      padding-bottom: 30px;
+      font-size: 40px;
+      padding-bottom: 40px;
     }
     .page_description {
       color: $black;
+      font-size: 25px;
       .span_description {
         font-family: $fontTitre;
       }
@@ -104,21 +105,48 @@
       }
     }
   }
-  .page_description__logout {
-    height: 540px;
+  .page_text_logout {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    .span_description__logout {
-      font-family: $fontTexte;
+    .page_title_logout {
+      color: $green;
+      font-family: $fontTitre;
       font-size: 40px;
+      text-shadow: 1px 1px 1px $green;
+    }
+    .page_description__logout {
+      height: 540px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      .banniere {
+        position: relative;
+        width: 99.8vw;
+        height: 700px;
+        top: 150px;
+        object-fit: cover;
+      }
+      .span_description__logout {
+        font-family: $fontTexte;
+        font-size: 65px;
+        position: absolute;
+        left: 550px;
+        top: 100px;
+        color: $white;
+        text-shadow: 1px 1px 1px $black;
+      }
     }
   }
   .faq {
-    padding-top: 100px;
+    margin-top: 230px;
+    background-color: #f7f7f7;
+    height: 50vh;
     .faq_title {
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      padding-top: 20px;
       h2 {
         font-family: $fontTitre;
         color: $black;
@@ -128,7 +156,7 @@
         }
       }
       .faq_arrow {
-        scale: 2;
+        scale: 2.5;
         color: $green;
       }
       .faq_arrow:hover {
@@ -145,7 +173,7 @@
         height: 600px;
       }
       p {
-        padding-top: 20px;
+        padding: 20px 0;
         font-family: $fontTexte;
         font-size: 24px;
         color: $black;

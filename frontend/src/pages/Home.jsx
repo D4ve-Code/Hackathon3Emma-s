@@ -6,6 +6,8 @@ import PlayerVideo from "../components/PlayerVideo";
 import imageStickerAdd from "../assets/images/img_4436-paris-point-daccueil-et-benevoles-mb-francois-silvestre-de-sacy.jpg";
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import { BiDownArrow, BiLeftArrow } from "react-icons/bi";
+import banniere from "../assets/images/imgbanniere.jpg";
+
 // import { element } from "prop-types";
 
 const Home = ({ isConnected }) => {
@@ -64,11 +66,12 @@ const Home = ({ isConnected }) => {
           </div>
         </>
       ) : (
-        <div className="page_text">
-          <h2 className="page_title">
+        <div className="page_text_logout">
+          <h2 className="page_title_logout">
             Bienvenue sur la page de gestion des smartphones reconditionnés
           </h2>
           <div className="page_description__logout">
+            <img className="banniere" src={banniere} alt="image" />
             <span className="span_description__logout">
               Vous devez être connecté pour accéder à cette page !
             </span>
@@ -78,8 +81,8 @@ const Home = ({ isConnected }) => {
       <div className="faq">
         <div className="faq_title">
           <h2>
-            <span>Besoin d'aide ?</span> Vous pouvez cliquer sur la flèche pour
-            voir une vidéo explicative !
+            <span>Besoin d'aide ?</span> <br /> N'hésitez pas à cliquer sur la
+            flèche pour en savoir plus !
           </h2>
           {faqDisplay ? (
             <BiDownArrow
