@@ -30,9 +30,9 @@ const ListPage = ({ dataPhones }) => {
   //   setModification((modification) => !modification);
   // };
 
-  useEffect(() => {
-    setDataUpdate(dataPhones);
-  }, [dataPhones]);
+  // useEffect(() => {
+  //   setDataUpdate(dataPhones);
+  // }, [dataPhones]);
 
   useEffect(() => {
     setFilteredCount(filteredItems.length);
