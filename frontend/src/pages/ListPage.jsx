@@ -7,6 +7,9 @@ const ListPage = ({ dataPhones }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
   const [filteredItems, setFilteredItems] = useState(dataPhones);
   const [searchId, setSearchId] = useState("");
+  const [filteredCount, setFilteredCount] = useState(dataPhones.length);
+  // const [dataUpdate, setDataUpdate] = useState(dataPhones);
+  // const [modification, setModification] = useState(false);
 
   const applyFilters = (dataPhones, selectedBrands, searchId) => {
     let filteredItems = dataPhones;
@@ -22,6 +25,19 @@ const ListPage = ({ dataPhones }) => {
     }
     return filteredItems;
   };
+
+  // const handleModification = () => {
+  //   setModification((modification) => !modification);
+  // };
+
+  useEffect(() => {
+    setDataUpdate(dataPhones);
+  }, [dataPhones]);
+
+  useEffect(() => {
+    setFilteredCount(filteredItems.length);
+  }, [filteredItems]);
+
   useEffect(() => {
     const newFilteredItems = applyFilters(dataPhones, selectedBrands, searchId);
     setFilteredItems(newFilteredItems);
@@ -46,6 +62,12 @@ const ListPage = ({ dataPhones }) => {
             onChange={(e) => setSearchId(e.target.value)}
           />
           <FiSearch className="btn_seacrh" />
+        </div>
+        <div className="listPage__count">
+          <p className="count__text">
+            <span className="color__count">{filteredCount}</span> smartphone(s)
+            trouvé(s)
+          </p>
         </div>
         <div className="listPage__container__list">
           {filteredItems.map((phone) => (

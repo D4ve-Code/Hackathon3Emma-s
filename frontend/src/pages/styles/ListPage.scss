@@ -51,6 +51,22 @@
             left: -50px;            
         }
     }
+    .listPage__count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 60px;
+
+        .count__text {
+            font-family: $fontTexte;
+            font-size: 1.1rem;
+
+            .color__count {
+                color: $red;
+            }
+        }
+    }
     .listPage__container__list {
         display: flex;
         justify-content: flex-start;
