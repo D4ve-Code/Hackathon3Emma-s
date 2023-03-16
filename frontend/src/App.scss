@@ -1,5 +1,9 @@
 @import "./settings.scss";
 @import "./components/styles/NavBar.scss";
+@import "./components/styles/NavBarConnected.scss";
+@import "./components/styles/ConnectModal.scss";
+@import "./components/styles/LogoutModal.scss";
+@import "./pages/styles/Home.scss";
 
 * {
   margin: 0;
