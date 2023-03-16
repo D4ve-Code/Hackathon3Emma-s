@@ -1,8 +1,56 @@
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import { FiSearch } from "react-icons/fi";
 import FilterListPage from "@components/FilterListPage";
+import { useState, useEffect } from "react";
 
-const ListPage = () => {
+const ListPage = ({ dataPhones }) => {
+  const [selectedBrands, setSelectedBrands] = useState(new Set());
+  const [selectedEtat, setSelectedEtat] = useState(new Set());
+  const [selectedCategory, setSelectedCategory] = useState(new Set());
+  const [selectedCity, setSelectedCity] = useState(new Set());
+  const [filteredItems, setFilteredItems] = useState(dataPhones);
+
+  const applyFilters = (dataPhones, selectedBrands) => {
+    let filteredItems = dataPhones;
+    if (selectedBrands.size > 0) {
+      filteredItems = filteredItems.filter((item) =>
+        selectedBrands.has(item.constructeur)
+      );
+    }
+    if (selectedEtat.size > 0) {
+      filteredItems = filteredItems.filter((etat) =>
+        selectedEtat.has(etat.statut)
+      );
+    }
+    if (selectedCategory.size > 0) {
+      filteredItems = filteredItems.filter((categorie) =>
+        selectedCategory.has(categorie.categorie_name)
+      );
+    }
+    if (selectedCity.size > 0) {
+      filteredItems = filteredItems.filter((city) =>
+        selectedCity.has(city.ville)
+      );
+    }
+    return filteredItems;
+  };
+  useEffect(() => {
+    const newFilteredItems = applyFilters(
+      dataPhones,
+      selectedBrands,
+      selectedEtat,
+      selectedCategory,
+      selectedCity
+    );
+    setFilteredItems(newFilteredItems);
+  }, [
+    selectedBrands,
+    dataPhones,
+    selectedEtat,
+    selectedCategory,
+    selectedCity,
+  ]);
+
   return (
     <>
       <div className="listPage__container">
@@ -22,194 +70,53 @@ const ListPage = () => {
           <FiSearch className="btn_seacrh" />
         </div>
         <div className="listPage__container__list">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>152202</td>
-                <td>Apple</td>
-                <td>Iphone 12</td>
-                <td>DEEE</td>
-                <td>2 Go</td>
-                <td>32 Go</td>
-                <td>120000</td>
-                <td>- 10%</td>
-                <td>Reims</td>
-                <td>2 - C</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>REPARABLE</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>REPARABLE</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>REPARABLE</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>REPARABLE</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>REPARABLE</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
+          {filteredItems.map((phone) => (
+            <>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Id Emmaus</th>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Etat</th>
+                    <th>RAM</th>
+                    <th>Stockage</th>
+                    <th>Indice antutu</th>
+                    <th>Pondération</th>
+                    <th>Localisation</th>
+                    <th>Catégorie</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{phone.id_emmaus_connect}</td>
+                    <td>{phone.constructeur}</td>
+                    <td>{phone.modele}</td>
+                    <td>{phone.statut}</td>
+                    <td>{phone.ram_nb}</td>
+                    <td>{phone.stockage_nb}</td>
+                    <td>{phone.antutu}</td>
+                    <td>{phone.ponderation_taux}</td>
+                    <td>{phone.ville}</td>
+                    <td>{phone.categorie_name}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button className="btn__modif">modifier</button>
+            </>
+          ))}
         </div>
-        <FilterListPage className="filter__list__page" />
+        <FilterListPage
+          className="filter__list__page"
+          selectedBrands={selectedBrands}
+          setSelectedBrands={setSelectedBrands}
+          selectedEtat={selectedEtat}
+          setSelectedEtat={setSelectedEtat}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedCity={selectedCity}
+          setSelectedCity={setSelectedCity}
+        />
       </div>
     </>
   );

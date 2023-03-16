@@ -1,9 +1,52 @@
 .filter__list__container {
-    
-    width: 250px;
-    max-height: 400px;
-    overflow-y: scroll;
-    position: relative;
-    top: -320px;
-    left: 50px;
+  width: 190px;
+  max-height: 400px;
+  overflow-y: scroll;
+  position: relative;
+  top: -320px;
+  left: 50px;
+
+  .filterOption-box {
+    padding: 10px;
+
+    .filter__Title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: $black;
+    }
+    .filter__Container {
+      .filterDiv {
+        display: flex;
+        justify-content: space-between;
+
+        .checkbox-container {
+          display: flex;
+          align-items: center;
+
+          input {
+            margin-right: 4px;
+          }
+        }
+
+        .icon__filter {
+          color: $black;
+          font-size: 20px;
+        }
+      }
+      .filterDropdown {
+        max-height: 80px; // Adjust this value as needed
+        overflow-y: auto;
+        margin-top: 8px;
+
+        .checkbox-item {
+          display: flex;
+          align-items: center;
+
+          input {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  }
 }
