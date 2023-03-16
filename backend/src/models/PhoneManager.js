@@ -7,7 +7,7 @@ class PhoneManager extends AbstractManager {
 
   findAllPhones() {
     return this.connection
-      .query(`SELECT photo_tel, id_emmaus_connect, constructeur, modele, et.statut, ram.ram_nb, st.stockage_nb, CONCAT('entre ', ant_min, ' et ', ant_max) AS antutu, pond.ponderation_taux, loc.ville, cat.categorie_name
+      .query(`SELECT id_emmaus_connect, constructeur, modele, et.statut, ram.ram_nb, st.stockage_nb, ant.intervalle AS antutu, pond.ponderation_taux, loc.ville, cat.categorie_name
     FROM ${this.table} 
     INNER JOIN etat AS et ON et.id=phone.etat_id
     INNER JOIN ram ON ram.id=phone.ram_id
@@ -20,7 +20,7 @@ class PhoneManager extends AbstractManager {
 
   insert(phone) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (constructeur, modele,ponderation_commentaire, indice, donateur, id_emmaus_connect, info_batterie, numero_imei, processeur, sys_exploitation, taille_ecran, resolution, chargeur, operateur, couleur, localisation_id, RAM_id, Stockage_id, Antutu_id, ponderation_id, categorie_id, etat_id, photo_tel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (constructeur, modele,ponderation_commentaire, indice, donateur, id_emmaus_connect, info_batterie, numero_imei, processeur, sys_exploitation, taille_ecran, resolution, chargeur, operateur, couleur, localisation_id, RAM_id, Stockage_id, Antutu_id, ponderation_id, categorie_id, etat_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         phone.constructeur,
         phone.modele,
@@ -44,7 +44,6 @@ class PhoneManager extends AbstractManager {
         phone.ponderation_id,
         phone.categorie_id,
         phone.etat_id,
-        phone.photo_tel,
       ]
     );
   }
