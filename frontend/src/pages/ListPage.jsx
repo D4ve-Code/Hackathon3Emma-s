@@ -1,8 +1,16 @@
-import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import { FiSearch } from "react-icons/fi";
+import { useState } from "react";
+import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import FilterListPage from "@components/FilterListPage";
 
 const ListPage = () => {
+  const [searchId, setSearchId] = useState([]);
+
+  const handleSearchId = (e) => {
+    e.preventDefault();
+    setSearchId(e.target.value);
+  };
+
   return (
     <>
       <div className="listPage__container">
@@ -15,11 +23,12 @@ const ListPage = () => {
         <div className="listPage__search">
           <h2 className="listPage__title__search">Rechercher par id Emmaus</h2>{" "}
           <input
-            type="text"
-            placeholder="Entrer un id"
+            type="number"
+            placeholder="Entrer un id à 6 chiffres"
             className="listPage__input"
+            onChange={handleSearchId}
           />
-          <FiSearch className="btn_seacrh" />
+          <FiSearch className="btn_seacrh" onClick={() => searchId} />
         </div>
         <div className="listPage__container__list">
           <table className="table">
@@ -49,161 +58,6 @@ const ListPage = () => {
                 <td>- 10%</td>
                 <td>Reims</td>
                 <td>2 - C</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>Reparable</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>Reparable</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>Reparable</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>Reparable</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="btn__modif">modifier</button>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Id Emmaus</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Etat</th>
-                <th>RAM</th>
-                <th>Stockage</th>
-                <th>Indice antutu</th>
-                <th>Pondération</th>
-                <th>Localisation</th>
-                <th>Catégorie</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>121521</td>
-                <td>Huawai</td>
-                <td>P30 pro</td>
-                <td>Reparable</td>
-                <td>1 Go</td>
-                <td>16 Go</td>
-                <td>140000</td>
-                <td> 10%</td>
-                <td>Paris</td>
-                <td>3 - B</td>
               </tr>
             </tbody>
           </table>
