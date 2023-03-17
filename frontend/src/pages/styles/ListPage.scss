@@ -57,12 +57,12 @@
         align-items: flex-start;
         flex-direction: column;
         position: relative;
-        left: 340px;
+        left: 290px;
         top: 80px;
         min-height: 400px;
         max-height: 400px;
         overflow-y: auto;
-        width: 80%;
+        width: 83%;
 
         .table {
             width: 90%;
@@ -83,11 +83,15 @@
                 color: $white;
                 border: solid 2px $green;
                 font-family: $fontTitre;
+                max-width: 145px;
+                min-width: 145px;
             }
             td {
                 border: solid 2px $green;
                 color: $black;
                 font-family: $fontTexte;
+                max-width: 145px;
+                min-width: 145px;
             }
 
             
@@ -104,7 +108,7 @@
             letter-spacing: 1px;
             position: relative;
             top: -40px;
-            left: 92%;
+            left: 94%;
             cursor: pointer;
         }
     }
