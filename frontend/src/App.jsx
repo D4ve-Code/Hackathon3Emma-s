@@ -35,6 +35,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home isConnected={isConnected} />} />
         <Route
+          path="/modify/:id"
+          element={<Home isConnected={isConnected} />}
+        />
+        <Route
           path="/listpage"
           element={<ListPage dataPhones={dataPhones} />}
         />
