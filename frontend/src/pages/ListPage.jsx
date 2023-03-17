@@ -1,22 +1,45 @@
 import { FiSearch } from "react-icons/fi";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import FilterListPage from "@components/FilterListPage";
 
 const ListPage = ({ dataPhones }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
+  const [selectedEtat, setSelectedEtat] = useState(new Set());
+  const [selectedCategory, setSelectedCategory] = useState(new Set());
+  const [selectedCity, setSelectedCity] = useState(new Set());
   const [filteredItems, setFilteredItems] = useState(dataPhones);
   const [searchId, setSearchId] = useState("");
   const [filteredCount, setFilteredCount] = useState(dataPhones.length);
-  const [modification, setModification] = useState(false);
-  const [dataUpdate, setDataUpdate] = useState(filteredItems);
 
-  const applyFilters = (dataPhones, selectedBrands, searchId) => {
+  const applyFilters = (
+    dataPhones,
+    selectedBrands,
+    selectedEtat,
+    selectedCategory,
+    selectedCity,
+    searchId
+  ) => {
     let filteredItems = dataPhones;
     if (selectedBrands.size > 0) {
       filteredItems = filteredItems.filter((item) =>
         selectedBrands.has(item.constructeur)
+      );
+    }
+    if (selectedEtat.size > 0) {
+      filteredItems = filteredItems.filter((etat) =>
+        selectedEtat.has(etat.statut)
+      );
+    }
+    if (selectedCategory.size > 0) {
+      filteredItems = filteredItems.filter((categorie) =>
+        selectedCategory.has(categorie.categorie_name)
+      );
+    }
+    if (selectedCity.size > 0) {
+      filteredItems = filteredItems.filter((city) =>
+        selectedCity.has(city.ville)
       );
     }
     if (searchId) {
@@ -27,54 +50,28 @@ const ListPage = ({ dataPhones }) => {
     return filteredItems;
   };
 
-  const handleModification = () => {
-    setModification((modification) => !modification);
-  };
-
-  const constructeurInputRef = useRef();
-  const modeleInputRef = useRef();
-  const statutInputRef = useRef();
-  const ram_nbInputRef = useRef();
-  const stockage_nbInputRef = useRef();
-  const antutuInputRef = useRef();
-  const ponderation_tauxInputRef = useRef();
-  const localisationInputRef = useRef();
-
-  const handleUpdate = (id) => {
-    const constructeur = constructeurInputRef.current.value;
-    const modele = modeleInputRef.current.value;
-    const statut = statutInputRef.current.value;
-    const ram_nb = ram_nbInputRef.current.value;
-    const stockage_nb = stockage_nbInputRef.current.value;
-    const antutu = antutuInputRef.current.value;
-    const ponderation_taux = ponderation_tauxInputRef.current.value;
-    const localisation = localisationInputRef.current.value;
-
-    setDataUpdate({
-      ...filteredItems,
-      constructeur: constructeur,
-      modele: modele,
-      statut: statut,
-      ram_nb: ram_nb,
-      stockage_nb: stockage_nb,
-      antutu: antutu,
-      ponderation_taux: ponderation_taux,
-      localisation: localisation,
-    });
-  };
-
-  useEffect(() => {
-    setDataUpdate(filteredItems);
-  }, [filteredItems]);
-
   useEffect(() => {
     setFilteredCount(filteredItems.length);
   }, [filteredItems]);
 
   useEffect(() => {
-    const newFilteredItems = applyFilters(dataPhones, selectedBrands, searchId);
+    const newFilteredItems = applyFilters(
+      dataPhones,
+      selectedBrands,
+      selectedEtat,
+      selectedCategory,
+      selectedCity,
+      searchId
+    );
     setFilteredItems(newFilteredItems);
-  }, [selectedBrands, dataPhones, searchId]);
+  }, [
+    dataPhones,
+    selectedBrands,
+    selectedEtat,
+    selectedCategory,
+    selectedCity,
+    searchId,
+  ]);
 
   return (
     <>
@@ -103,10 +100,8 @@ const ListPage = ({ dataPhones }) => {
           </p>
         </div>
         <div className="listPage__container__list">
-          {console.log("dataUpdate: ", dataUpdate)}
           {filteredItems.map((phone) => (
             <div className="listPage__container__table" key={phone.id}>
-              {console.log("filteredItems", filteredItems)}
               <table className="table">
                 <thead>
                   <tr>
@@ -124,140 +119,22 @@ const ListPage = ({ dataPhones }) => {
                 </thead>
                 <tbody>
                   <tr>
-                    {!modification && <td>{phone.id_emmaus_connect}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="number"
-                          value={phone.id_emmaus_connect}
-                          className="tr__container"
-                          onChange={(e) => handleUpdate(phone.id)}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.constructeur}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="text"
-                          value={phone.constructeur}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={constructeurInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.modele}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="text"
-                          value={phone.modele}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={modeleInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.statut}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="text"
-                          value={phone.statut}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={statutInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.ram_nb}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="number"
-                          value={phone.ram_nb}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={ram_nbInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.stockage_nb}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="number"
-                          value={phone.stockage_nb}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={stockage_nbInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.antutu}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="text"
-                          value={phone.antutu}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={antutuInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.ponderation_taux}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="text"
-                          value={phone.ponderation_taux}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={ponderation_tauxInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.ville}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="text"
-                          value={phone.ville}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={localisationInputRef}
-                        />
-                      </td>
-                    )}
-                    {!modification && <td>{phone.categorie_name}</td>}
-                    {modification && (
-                      <td>
-                        <input
-                          type="text"
-                          value={phone.categorie_name}
-                          className="tr__container"
-                          onChange={handleUpdate}
-                          ref={categorieInputRef}
-                        />
-                      </td>
-                    )}
+                    <td>{phone.id_emmaus_connect}</td>
+                    <td>{phone.constructeur}</td>
+                    <td>{phone.modele}</td>
+                    <td>{phone.statut}</td>
+                    <td>{phone.ram_nb}</td>
+                    <td>{phone.stockage_nb}</td>
+                    <td>{phone.antutu}</td>
+                    <td>{phone.ponderation_taux}</td>
+                    <td>{phone.ville}</td>
+                    <td>{phone.categorie_name}</td>
                   </tr>
                 </tbody>
               </table>
               <Link to={"/modify/" + dataPhones.id}>
-                <button
-                  className="btn__modif"
-                  // onClick={handleModification}
-                >
-                  "modifier"
-                  {/* {!modification ? "modifier" : "valider"} */}
-                </button>
+                <button className="btn__modif">"modifier"</button>
               </Link>
-              {/* <button className="btn__modif" onClick={handleModification}>
-                {!modification ? "modifier" : "valider"}
-              </button> */}
             </div>
           ))}
         </div>
@@ -265,6 +142,12 @@ const ListPage = ({ dataPhones }) => {
           className="filter__list__page"
           selectedBrands={selectedBrands}
           setSelectedBrands={setSelectedBrands}
+          selectedEtat={selectedEtat}
+          setSelectedEtat={setSelectedEtat}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedCity={selectedCity}
+          setSelectedCity={setSelectedCity}
         />
       </div>
     </>

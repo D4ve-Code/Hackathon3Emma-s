@@ -1,28 +1,47 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const FilterListPage = ({ setSelectedBrands, selectedBrands }) => {
+const FilterListPage = ({
+  setSelectedBrands,
+  selectedBrands,
+  setSelectedEtat,
+  selectedEtat,
+  selectedCategory,
+  setSelectedCategory,
+  selectedCity,
+  setSelectedCity,
+}) => {
+  const [dataEtat, setDataEtat] = useState([]);
+  const [dataCategory, setDataCategory] = useState([]);
+  const [dataCity, setDataCity] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/etat").then((response) => {
+      setDataEtat(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/categories").then((response) => {
+      setDataCategory(response.data);
+    });
+  }, []);
+  useEffect(() => {
+    axios.get("http://localhost:5000/localisation").then((response) => {
+      setDataCity(response.data);
+    });
+  }, []);
+
   const [showDropdownMarque, setShowDropdownMarque] = useState(false);
-  const [showDropdownModel, setShowDropdownModel] = useState(false);
   const [showDropdownEtat, setShowDropdownEtat] = useState(false);
-  const [showDropdownRam, setShowDropdownRam] = useState(false);
-  const [showDropdownStockage, setShowDropdownStockage] = useState(false);
   const [showDropdownCategory, setShowDropdownCategory] = useState(false);
   const [showDropdownCity, setShowDropdownCity] = useState(false);
 
   const handleDropdownMarqueToggle = () => {
     setShowDropdownMarque(!showDropdownMarque);
   };
-  const handleDropdownModelToggle = () => {
-    setShowDropdownModel(!showDropdownModel);
-  };
   const handleDropdownEtatToggle = () => {
     setShowDropdownEtat(!showDropdownEtat);
-  };
-  const handleDropdownRamToggle = () => {
-    setShowDropdownRam(!showDropdownRam);
-  };
-  const handleDropdownStockageToggle = () => {
-    setShowDropdownStockage(!showDropdownStockage);
   };
   const handleDropdownCategoryToggle = () => {
     setShowDropdownCategory(!showDropdownCategory);
@@ -50,6 +69,68 @@ const FilterListPage = ({ setSelectedBrands, selectedBrands }) => {
         updatedBrands.delete(value);
       }
       setSelectedBrands(updatedBrands);
+    }
+  };
+
+  const handleEtatCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+
+    if (value === "Tous") {
+      if (checked) {
+        setSelectedEtat(new Set());
+      } else {
+        setSelectedEtat(new Set(dataEtat.map((etat) => etat.statut)));
+      }
+    } else {
+      const updatedEtats = new Set(selectedEtat);
+      if (checked) {
+        updatedEtats.add(value);
+      } else {
+        updatedEtats.delete(value);
+      }
+      setSelectedEtat(updatedEtats);
+    }
+  };
+
+  const handleCategoryCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+
+    if (value === "Tous") {
+      if (checked) {
+        setSelectedCategory(new Set());
+      } else {
+        setSelectedCategory(
+          new Set(dataCategory.map((Category) => Category.categorie_name))
+        );
+      }
+    } else {
+      const updatedCategory = new Set(selectedCategory);
+      if (checked) {
+        updatedCategory.add(value);
+      } else {
+        updatedCategory.delete(value);
+      }
+      setSelectedCategory(updatedCategory);
+    }
+  };
+
+  const handleCityCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+
+    if (value === "Tous") {
+      if (checked) {
+        setSelectedCity(new Set());
+      } else {
+        setSelectedCity(new Set(dataCity.map((City) => City.ville)));
+      }
+    } else {
+      const updatedCity = new Set(selectedCity);
+      if (checked) {
+        updatedCity.add(value);
+      } else {
+        updatedCity.delete(value);
+      }
+      setSelectedCity(updatedCity);
     }
   };
 
@@ -130,112 +211,116 @@ const FilterListPage = ({ setSelectedBrands, selectedBrands }) => {
           )}
         </div>
       </div>
-
       <div className="filterOption-box">
-        <div className="filter__Title">Modèle :</div>
+        <div className="filter__Title">État :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownModelToggle}>
-            <div></div> <div className="icon__filter">&#x25BE;</div>
-          </button>
-          {showDropdownModel && (
-            <ul className="filterDropdown">
-              <li className="filterDropdownItem">
-                <label htmlFor="check" className="label__filter">
-                  <input type="checkbox" id="check" /> Iphone 12
-                </label>
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-      <div className="filterOption-box">
-        <div className="filter__Title">Etat :</div>
-        <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownEtatToggle}>
-            <div></div> <div className="icon__filter">&#x25BE;</div>
-          </button>
+          <div className="filterDiv">
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="etat-check"
+                value="Tous"
+                checked={selectedEtat.size === 0}
+                onChange={handleEtatCheckboxChange}
+              />
+              <p>Tous</p>
+            </div>
+            <div className="icon__filter" onClick={handleDropdownEtatToggle}>
+              &#x25BE;
+            </div>
+          </div>
           {showDropdownEtat && (
-            <ul className="filterDropdown">
-              <li className="filterDropdownItem">
-                <label htmlFor="check" className="label__filter">
-                  <input type="checkbox" id="check" /> DEEE
-                </label>
-              </li>
-            </ul>
+            <div className="filterDropdown">
+              {dataEtat.map((etat) => (
+                <div className="checkbox-item" key={etat.id}>
+                  <input
+                    type="checkbox"
+                    id={`etat-${etat.id}`}
+                    value={etat.statut}
+                    checked={selectedEtat.has(etat.statut)}
+                    onChange={handleEtatCheckboxChange}
+                  />
+                  <label htmlFor={`etat-${etat.id}`}>{etat.statut}</label>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
       <div className="filterOption-box">
-        <div className="filter__Title">RAM :</div>
+        <div className="filter__Title">Catégories :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownRamToggle}>
-            <div></div> <div className="icon__filter">&#x25BE;</div>
-          </button>
-          {showDropdownRam && (
-            <ul className="filterDropdown">
-              <li className="filterDropdownItem">
-                <label htmlFor="check" className="label__filter">
-                  <input type="checkbox" id="check" /> 1 Go
-                </label>
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-      <div className="filterOption-box">
-        <div className="filter__Title">Stockage :</div>
-        <div className="filter__Container">
-          <button
-            className="filterButton"
-            onClick={handleDropdownStockageToggle}
-          >
-            <div></div> <div className="icon__filter">&#x25BE;</div>
-          </button>
-          {showDropdownStockage && (
-            <ul className="filterDropdown">
-              <li className="filterDropdownItem">
-                <label htmlFor="check" className="label__filter">
-                  <input type="checkbox" id="check" /> 32 Go
-                </label>
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-      <div className="filterOption-box">
-        <div className="filter__Title">Catégorie :</div>
-        <div className="filter__Container">
-          <button
-            className="filterButton"
-            onClick={handleDropdownCategoryToggle}
-          >
-            <div></div> <div className="icon__filter">&#x25BE;</div>
-          </button>
+          <div className="filterDiv">
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="etat-check"
+                value="Tous"
+                checked={selectedCategory.size === 0}
+                onChange={handleCategoryCheckboxChange}
+              />
+              <p>Tous</p>
+            </div>
+            <div
+              className="icon__filter"
+              onClick={handleDropdownCategoryToggle}
+            >
+              &#x25BE;
+            </div>
+          </div>
           {showDropdownCategory && (
-            <ul className="filterDropdown">
-              <li className="filterDropdownItem">
-                <label htmlFor="check" className="label__filter">
-                  <input type="checkbox" id="check" /> 3 - B
-                </label>
-              </li>
-            </ul>
+            <div className="filterDropdown">
+              {dataCategory.map((categorie) => (
+                <div className="checkbox-item" key={categorie.id}>
+                  <input
+                    type="checkbox"
+                    id={`categorie-${categorie.id}`}
+                    value={categorie.categorie_name}
+                    checked={selectedCategory.has(categorie.categorie_name)}
+                    onChange={handleCategoryCheckboxChange}
+                  />
+                  <label htmlFor={`categorie-${categorie.id}`}>
+                    {categorie.categorie_name}
+                  </label>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
       <div className="filterOption-box">
         <div className="filter__Title">Ville :</div>
         <div className="filter__Container">
-          <button className="filterButton" onClick={handleDropdownCityToggle}>
-            <div></div> <div className="icon__filter">&#x25BE;</div>
-          </button>
+          <div className="filterDiv">
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="etat-check"
+                value="Tous"
+                checked={selectedCity.size === 0}
+                onChange={handleCityCheckboxChange}
+              />
+              <p>Tous</p>
+            </div>
+            <div className="icon__filter" onClick={handleDropdownCityToggle}>
+              &#x25BE;
+            </div>
+          </div>
           {showDropdownCity && (
-            <ul className="filterDropdown">
-              <li className="filterDropdownItem">
-                <label htmlFor="check" className="label__filter">
-                  <input type="checkbox" id="check" /> Reims
-                </label>
-              </li>
-            </ul>
+            <div className="filterDropdown">
+              {dataCity.map((city) => (
+                <div className="checkbox-item" key={city.id}>
+                  <input
+                    type="checkbox"
+                    id={`city-${city.id}`}
+                    value={city.ville}
+                    checked={selectedCity.has(city.ville)}
+                    onChange={handleCityCheckboxChange}
+                  />
+                  <label htmlFor={`city-${city.id}`}>{city.ville}</label>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
