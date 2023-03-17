@@ -4,6 +4,7 @@ import FilterListPage from "@components/FilterListPage";
 import { useState, useEffect } from "react";
 import { BiDownArrow, BiLeftArrow } from "react-icons/bi";
 import PlayerVideoList from "../components/PlayerVideoList";
+import FileCSV from "@components/FileCSV";
 
 const ListPage = ({ dataPhones }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
@@ -63,6 +64,7 @@ const ListPage = ({ dataPhones }) => {
         <div className="listPage__container__image">
           <img src={imageStickerList} alt="image de la liste des smartphones" />
         </div>
+        <FileCSV />
         <div className="listPage__search">
           <h2 className="listPage__title__search">Rechercher par id Emmaus</h2>{" "}
           <input
@@ -120,6 +122,7 @@ const ListPage = ({ dataPhones }) => {
           selectedCity={selectedCity}
           setSelectedCity={setSelectedCity}
         />
+
         <div className="faq">
           <div className="faq_title">
             <h2>

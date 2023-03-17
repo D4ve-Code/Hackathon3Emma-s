@@ -1,6 +1,6 @@
 import React from "react";
 
-import Clip from "../assets/videos/video1faq.mp4";
+import Clip from "../assets/videos/videoFaqForm.mp4";
 
 const PlayerVideoHome = () => {
   return (

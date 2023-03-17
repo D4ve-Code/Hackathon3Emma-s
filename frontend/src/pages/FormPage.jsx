@@ -2,23 +2,31 @@ import { Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { BiDownArrow, BiLeftArrow } from "react-icons/bi";
+import PlayerVideoForm from "../components/PlayerVideoForm";
 
 const FormPage = () => {
   const [formData, setFormData] = useState({
-    identifiant: "",
-    imei: "",
-    donateur: "",
     constructeur: "",
     modele: "",
-    couleur: "",
-    etat: "",
+    commentaire: "",
+    donateur: "",
+    id_emmaus_connect: "",
+    info_batterie: "",
+    numero_imei: "",
+    processeur: "",
+    sys_exploitation: "",
+    taille_ecran: "",
+    resolution: "",
     chargeur: "",
     operateur: "",
-    ville: "",
-    ram: "",
-    stockage: "",
-    ponderation: "",
-    antutu: "",
+    couleur: "",
+    localisation_id: "",
+    RAM_id: "",
+    Stockage_id: "",
+    Antutu_id: "",
+    ponderation_id: "",
+    etat_id: "",
   });
   const [antutuList, setAntutuList] = useState([]);
   const [ponderationList, setPonderationList] = useState([]);
@@ -27,6 +35,7 @@ const FormPage = () => {
   const [villeList, setVilleList] = useState([]);
   const [etatList, setEtatList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [faqDisplay, setFaqDisplay] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -145,32 +154,33 @@ const FormPage = () => {
             <label htmlFor="identifiant">Identifiant:</label>
             <input
               type="text"
-              name="identifiant"
+              name="id_emmaus_connect"
               id="identifiant"
               placeholder="Identifiant Emmaüs_Connect - Ex: 15AZ781CL6"
-              value={formData.identifiant}
+              value={formData.id_emmaus_connect}
               onChange={handleChange}
             />
             <label htmlFor="imei">Numéro IME:</label>
             <input
               type="number"
-              name="imei"
+              name="numero_imei"
               id="imei"
               placeholder="Numéro IMEI du téléphone - Ex: 165131874321"
-              value={formData.imei}
+              value={formData.numero_imei}
               onChange={handleChange}
             />
 
-            <label htmlFor="ville">
+            <label htmlFor="localisation_id">
               <select
-                name="ville"
-                value={formData.ville}
+                name="localisation_id"
+                value={formData.localisation_id}
                 onChange={handleChange}
                 required
               >
                 <option value="">--Sélectionnez la ville--</option>
+
                 {villeList.map((item, index) => (
-                  <option key={index} value={item.ville}>
+                  <option key={index} value={item.id}>
                     {item.ville}
                   </option>
                 ))}
@@ -219,16 +229,16 @@ const FormPage = () => {
               onChange={handleChange}
             />
 
-            <label htmlFor="etat">
+            <label htmlFor="etat_id">
               <select
-                name="etat"
-                value={formData.etat}
+                name="etat_id"
+                value={formData.etat_id}
                 onChange={handleChange}
                 required
               >
                 <option value="">--Sélectionnez l'état--</option>
                 {etatList.map((item, index) => (
-                  <option key={index} value={item.statut}>
+                  <option key={index} value={item.id}>
                     {item.statut}
                   </option>
                 ))}
@@ -261,9 +271,9 @@ const FormPage = () => {
             <label htmlFor="batterie">Batterie:</label>
             <input
               type="text"
-              name="batterie"
+              name="info_batterie"
               id="batterie"
-              value={formData.batterie}
+              value={formData.info_batterie}
               placeholder="Préciser l'état de la batterie - Ex: 30%"
               onChange={handleChange}
             />
@@ -279,18 +289,18 @@ const FormPage = () => {
             <label htmlFor="exploitation">Exploitation:</label>
             <input
               type="text"
-              name="exploitation"
+              name="sys_exploitation"
               id="exploitation"
-              value={formData.exploitation}
+              value={formData.sys_exploitation}
               placeholder="Système d'exploitation - Ex: Android 8"
               onChange={handleChange}
             />
             <label htmlFor="taille">Taille:</label>
             <input
               type="text"
-              name="taille"
+              name="taille_ecran"
               id="taille"
-              value={formData.taille}
+              value={formData.taille_ecran}
               placeholder="Taille de l'écran - Ex: 5.8"
               onChange={handleChange}
             />
@@ -303,31 +313,31 @@ const FormPage = () => {
               placeholder="Resolution de l'écran - Ex: 568 ppp"
               onChange={handleChange}
             />
-            <label htmlFor="ram">
+            <label htmlFor="RAM_id">
               <select
-                name="ram"
-                value={formData.ram}
+                name="RAM_id"
+                value={formData.RAM_id}
                 onChange={handleChange}
                 required
               >
                 <option value="">--Sélectionnez la RAM--</option>
                 {ramList.map((item, index) => (
-                  <option key={index} value={item.ram_nb}>
+                  <option key={index} value={item.id}>
                     {item.ram_nb}
                   </option>
                 ))}
               </select>
             </label>
-            <label htmlFor="stockage">
+            <label htmlFor="Stockage_id">
               <select
-                name="stockage"
-                value={formData.stockage}
+                name="Stockage_id"
+                value={formData.Stockage_id}
                 onChange={handleChange}
                 required
               >
                 <option value="">--Sélectionnez le stockage--</option>
                 {stockageList.map((item, index) => (
-                  <option key={index} value={item.stockage_nb}>
+                  <option key={index} value={item.id}>
                     {item.stockage_nb}
                   </option>
                 ))}
@@ -338,25 +348,25 @@ const FormPage = () => {
       case 4:
         return (
           <>
-            <label htmlFor="antutu">
+            <label htmlFor="Antutu_id">
               <select
-                name="antutu"
-                value={formData.antutu}
+                name="Antutu_id"
+                value={formData.Antutu_id}
                 onChange={handleChange}
                 required
               >
                 <option value="">--Sélectionnez le score Aututu--</option>
                 {antutuList.map((item, index) => (
-                  <option key={index} value={item.intervalle}>
+                  <option key={index} value={item.id}>
                     {item.intervalle}
                   </option>
                 ))}
               </select>
             </label>
-            <label htmlFor="ponderation">
+            <label htmlFor="ponderation_id">
               <select
-                name="ponderation"
-                value={formData.ponderation}
+                name="ponderation_id"
+                value={formData.ponderation_id}
                 onChange={handleChange}
                 required
               >
@@ -364,18 +374,18 @@ const FormPage = () => {
                   --Sélectionnez le taux de pondération--
                 </option>
                 {ponderationList.map((item, index) => (
-                  <option key={index} value={item.taux}>
+                  <option key={index} value={item.id}>
                     {item.taux}
                   </option>
                 ))}
               </select>
             </label>
-            <label htmlFor="commentaire">Commentaire:</label>
+            <label htmlFor="ponderation_commentaire">Commentaire:</label>
             <textarea
               className="form-commentaire"
               type="text"
               placeholder="Commentaire sur le choix de pondération"
-              value={formData.commentaire}
+              value={formData.ponderation_commentaire}
               onChange={handleChange}
             />
           </>
@@ -421,6 +431,37 @@ const FormPage = () => {
           )}
         </div>
       </motion.form>
+      <div className="faq">
+        <div className="faq_title">
+          <h2>
+            <span>Besoin d'aide ?</span> <br /> N'hésitez pas à cliquer sur la
+            flèche pour en savoir plus !
+          </h2>
+          {faqDisplay ? (
+            <BiDownArrow
+              className="faq_arrow"
+              onClick={() => setFaqDisplay(!faqDisplay)}
+            />
+          ) : (
+            <BiLeftArrow
+              className="faq_arrow"
+              onClick={() => setFaqDisplay(!faqDisplay)}
+            />
+          )}
+        </div>
+        {faqDisplay && (
+          <div className="faq_infos">
+            <div className="video_faq">
+              <PlayerVideoForm />
+            </div>
+            <p>
+              Si vous êtes coincés, vous pouvez nous appeler au{" "}
+              <span>01 27 54 98 36</span> ou nous contacter à{" "}
+              <span>emmaus-contact@contact.org</span>
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
