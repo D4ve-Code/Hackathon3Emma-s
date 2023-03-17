@@ -1,0 +1,184 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input,
+    select {
+      max-width: 100%;
+      margin-bottom: 50px;
+      padding: 20px;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+  }
+
+  .form-commentaire {
+    text-align: center;
+    height: 10rem;
+    width: 30em;
+    font-size: 1rem;
+    margin-top: 2.5rem;
+    text-align: start;
+    border-radius: 0.5rem;
+    border: 2px solid black;
+    box-shadow: 0px 2px 0 0 black;
+    padding: 1rem;
+    resize: vertical;
+  }
+
+  .fade-in {
+    animation: fade-in 0.5s ease-in-out;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.formPage-para {
+  margin: 3rem;
+  text-align: center;
+  text-shadow: 0.5px 0.5px red;
+  letter-spacing: 0.1rem;
+}
+
+.fromPage-h1 {
+  border: 3px dotted black;
+  padding: 2rem;
+}
+
+.form-btn {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.form-suivant,
+.form-soumettre,
+.form-precedent {
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 5px 10px 0;
+  overflow: visible;
+  padding: 12px 40px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.form-suivant:focus,
+.form-soumettre:focus,
+.form-precedent:focus {
+  text-decoration: none;
+}
+
+.form-suivant:hover,
+.form-soumettre:hover,
+.form-precedent:hover {
+  text-decoration: none;
+}
+
+.form-suivant:active,
+.form-soumettre:active,
+.form-precedent:active {
+  box-shadow: rgba(0, 0, 0, 0.125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.form-suivant:not([disabled]):active,
+.form-soumettre:not([disabled]):active,
+.form-precedent:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .form-suivant,
+  .form-soumettre,
+  .form-suivant {
+    padding: 12px 50px;
+  }
+}
+.faq {
+  background-color: #f7f7f7;
+  height: 51vh;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  bottom: 200px;
+  margin-top: 180px;
+  .faq_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    h2 {
+      font-family: $fontTitre;
+      color: $black;
+      span {
+        color: $green;
+        font-size: 40px;
+      }
+    }
+    .faq_arrow {
+      scale: 2.5;
+      color: $green;
+    }
+    .faq_arrow:hover {
+      color: $red;
+    }
+  }
+  .faq_infos {
+    @include flex;
+    flex-direction: column;
+    height: 100px;
+    padding-top: 250px;
+    .video_faq {
+      width: 600px;
+      height: 600px;
+    }
+    p {
+      padding: 20px 0;
+      font-family: $fontTexte;
+      font-size: 24px;
+      color: $black;
+      span {
+        color: $blue;
+        font: bold;
+        font-size: 30px;
+      }
+    }
+  }
+}

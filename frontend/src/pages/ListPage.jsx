@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import FilterListPage from "@components/FilterListPage";
+import { BiDownArrow, BiLeftArrow } from "react-icons/bi";
+import PlayerVideoList from "../components/PlayerVideoList";
+import FileCSV from "@components/FileCSV";
 
 const ListPage = ({ dataPhones, setPouletRefresh }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
@@ -12,6 +15,7 @@ const ListPage = ({ dataPhones, setPouletRefresh }) => {
   const [filteredItems, setFilteredItems] = useState(dataPhones);
   const [searchId, setSearchId] = useState("");
   const [filteredCount, setFilteredCount] = useState(dataPhones.length);
+  const [faqDisplay, setFaqDisplay] = useState(false);
 
   const applyFilters = (
     dataPhones,
@@ -82,6 +86,7 @@ const ListPage = ({ dataPhones, setPouletRefresh }) => {
         <div className="listPage__container__image">
           <img src={imageStickerList} alt="image de la liste des smartphones" />
         </div>
+        <FileCSV />
         <div className="listPage__search">
           <h2 className="listPage__title__search">Rechercher par id Emmaus</h2>{" "}
           <input
@@ -149,6 +154,38 @@ const ListPage = ({ dataPhones, setPouletRefresh }) => {
           selectedCity={selectedCity}
           setSelectedCity={setSelectedCity}
         />
+
+        <div className="faq faq1">
+          <div className="faq_title">
+            <h2>
+              <span>Besoin d'aide ?</span> <br /> N'hésitez pas à cliquer sur la
+              flèche pour en savoir plus !
+            </h2>
+            {faqDisplay ? (
+              <BiDownArrow
+                className="faq_arrow"
+                onClick={() => setFaqDisplay(!faqDisplay)}
+              />
+            ) : (
+              <BiLeftArrow
+                className="faq_arrow"
+                onClick={() => setFaqDisplay(!faqDisplay)}
+              />
+            )}
+          </div>
+          {faqDisplay && (
+            <div className="faq_infos">
+              <div className="video_faq">
+                <PlayerVideoList />
+              </div>
+              <p>
+                Si vous êtes coincés, vous pouvez nous appeler au{" "}
+                <span>01 27 54 98 36</span> ou nous contacter à{" "}
+                <span>emmaus-contact@contact.org</span>
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

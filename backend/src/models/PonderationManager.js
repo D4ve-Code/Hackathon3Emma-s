@@ -7,7 +7,7 @@ class AntutuManager extends AbstractManager {
 
   findAllPonderation() {
     return this.connection
-      .query(`SELECT CONCAT(ROUND(ponderation_taux * 100), '%') AS taux
+      .query(`SELECT CONCAT(ROUND(ponderation_taux * 100), '%') AS taux, id
     FROM ${this.table}`);
   }
 }

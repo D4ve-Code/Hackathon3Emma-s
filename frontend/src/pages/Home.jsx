@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import PlayerVideo from "../components/PlayerVideo";
+import PlayerVideoHome from "../components/PlayerVideoHome";
 
 import imageStickerAdd from "../assets/images/img_4436-paris-point-daccueil-et-benevoles-mb-francois-silvestre-de-sacy.jpg";
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import { BiDownArrow, BiLeftArrow } from "react-icons/bi";
+import banniere from "../assets/images/imgbanniere.jpg";
+
 // import { element } from "prop-types";
 
 const Home = ({ isConnected }) => {
@@ -51,7 +53,7 @@ const Home = ({ isConnected }) => {
                 Voir les téléphones disponibles
               </button>
             </Link>
-            <Link className="sticker_add" to="/addpage">
+            <Link className="sticker_add" to="/formpage">
               <img
                 className="sticker_add_image"
                 src={imageStickerAdd}
@@ -64,13 +66,14 @@ const Home = ({ isConnected }) => {
           </div>
         </>
       ) : (
-        <div className="page_text">
-          <h2 className="page_title">
+        <div className="page_text_logout">
+          <h2 className="page_title_logout">
             Bienvenue sur la page de gestion des smartphones reconditionnés
           </h2>
           <div className="page_description__logout">
+            <img className="banniere" src={banniere} alt="image" />
             <span className="span_description__logout">
-              Vous devez être connecté pour accéder à cette page !
+              Vous devez être connectés pour accéder à cette page !
             </span>
           </div>
         </div>
@@ -78,8 +81,8 @@ const Home = ({ isConnected }) => {
       <div className="faq">
         <div className="faq_title">
           <h2>
-            <span>Besoin d'aide ?</span> Vous pouvez cliquer sur la flèche pour
-            voir une vidéo explicative !
+            <span>Besoin d'aide ?</span> <br /> N'hésitez pas à cliquer sur la
+            flèche pour en savoir plus !
           </h2>
           {faqDisplay ? (
             <BiDownArrow
@@ -96,7 +99,7 @@ const Home = ({ isConnected }) => {
         {faqDisplay && (
           <div className="faq_infos">
             <div className="video_faq">
-              <PlayerVideo />
+              <PlayerVideoHome />
             </div>
             <p>
               Si vous êtes coincés, vous pouvez nous appeler au{" "}

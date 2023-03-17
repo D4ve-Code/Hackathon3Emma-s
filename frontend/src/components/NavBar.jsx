@@ -43,8 +43,7 @@ const NavBar = ({ setIsConnected }) => {
       </div>
       <div className="nav__logo">
         <Link to="/">
-          <img src={EmmausLogo} alt="Emmaus_Logo" />
-          <p>Cliquer ici pour retouner à l'acceuil</p>
+          <img src={EmmausLogo} alt="Emmaus_Logo" className="navbar-logo" />
         </Link>
       </div>
     </div>

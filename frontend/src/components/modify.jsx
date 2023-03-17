@@ -28,10 +28,10 @@ const Modify = (props) => {
       .then((res) => console.log(res.data) || setData(res.data));
   }, []);
   return (
-    <div className="listPage__container__table">
-      <h2>Modifier un téléphone</h2>
+    <div className="mofidy-listPage__container__table">
+      <h2 className="modify-h2">Modifier un téléphone</h2>
       {console.log(data)}
-      <table className="table">
+      <table className="modify-table">
         <thead>
           <tr>
             <th>Id Emmaus</th>
@@ -133,9 +133,9 @@ const Modify = (props) => {
           </tr>
         </tbody>
       </table>
-      <button className="btn__modif" onClick={handelSub}>
+      <button className="modify-btn__modif" onClick={handelSub}>
         {" "}
-        "modifier"
+        modifier
       </button>
     </div>
   );

@@ -1,16 +1,16 @@
 .filter__list__container {
   width: 190px;
-  max-height: 400px;
-  overflow-y: scroll;
-  position: relative;
-  top: -320px;
-  left: 50px;
+    max-height: 750px;
+    overflow-y: scroll;
+    position: relative;
+    top: -690px;
+    left: 50px;
 
   .filterOption-box {
-    padding: 10px;
+    padding: 10px 0;
 
     .filter__Title {
-      font-size: 1.2em;
+      font-size: 1.5em;
       font-weight: bold;
       color: $black;
     }
@@ -26,11 +26,14 @@
           input {
             margin-right: 4px;
           }
+          p {
+            font-size: 20px;
+          }
         }
 
         .icon__filter {
           color: $black;
-          font-size: 20px;
+          font-size: 30px;
         }
       }
       .filterDropdown {

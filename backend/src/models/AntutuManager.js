@@ -6,7 +6,7 @@ class AntutuManager extends AbstractManager {
   }
 
   findAllAntutu() {
-    return this.connection.query(`SELECT intervalle FROM ${this.table}`);
+    return this.connection.query(`SELECT intervalle, id FROM ${this.table}`);
   }
 }
 module.exports = AntutuManager;

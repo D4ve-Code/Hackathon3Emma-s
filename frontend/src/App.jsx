@@ -6,6 +6,8 @@ import NavBar from "./components/NavBar";
 import NavBarConnected from "./components/NavBarConnected";
 import ListPage from "./pages/ListPage";
 import Modify from "./components/modify";
+import FormPage from "./pages/FormPage";
+
 import "./App.scss";
 
 function App() {
@@ -53,6 +55,7 @@ function App() {
             />
           }
         />
+        <Route path="/formpage" element={<FormPage />} />
       </Routes>
     </div>
   );

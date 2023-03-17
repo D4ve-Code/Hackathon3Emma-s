@@ -33,10 +33,12 @@ router.get("/ram", ramControllers.browse);
 router.get("/stockage", stockageControllers.browse);
 
 router.get("/categories", categoryControllers.browse);
+
 // router.get("/items/:id", itemControllers.read);
 // router.put("/items/:id", itemControllers.edit);
 // router.post("/items", itemControllers.add);
 // router.delete("/items/:id", itemControllers.destroy);
+
 router.put("/phones/:id", phoneControllers.edit);
 router.put("/phonesmodi/:id", phoneControllers.modifyphone);
 

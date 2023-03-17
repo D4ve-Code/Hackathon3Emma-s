@@ -1,8 +1,8 @@
 import React from "react";
 
-import Clip from "../assets/videos/videoFaqHomePage.mp4";
+import Clip from "../assets/videos/videoFaqList.mp4";
 
-const PlayerVideo = () => {
+const PlayerVideoHome = () => {
   return (
     <>
       <video width="100%" height="100%" controls>
@@ -12,4 +12,4 @@ const PlayerVideo = () => {
   );
 };
 
-export default PlayerVideo;
+export default PlayerVideoHome;

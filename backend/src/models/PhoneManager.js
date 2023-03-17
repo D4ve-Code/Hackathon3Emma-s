@@ -30,6 +30,19 @@ class PhoneManager extends AbstractManager {
     INNER JOIN categorie AS cat ON cat.id=phone.categorie_id;`);
   }
 
+  findAllExport() {
+    return this.connection
+      .query(`SELECT loc.ville, donateur, id_emmaus_connect, cat.categorie_name, info_batterie, constructeur, modele, numero_imei, et.statut, ram.ram_nb, st.stockage_nb, ant.intervalle AS antutu, pond.ponderation_taux, cat.categorie_name
+    FROM ${this.table} 
+    INNER JOIN etat AS et ON et.id=phone.etat_id
+    INNER JOIN ram ON ram.id=phone.ram_id
+    INNER JOIN stockage AS st ON st.id=phone.stockage_id
+    INNER JOIN antutu AS ant ON ant.id=phone.Antutu_id
+    INNER JOIN ponderation AS pond ON pond.id=phone.ponderation_id
+    INNER JOIN localisation AS loc ON loc.id=phone.localisation_id
+    INNER JOIN categorie AS cat ON cat.id=phone.categorie_id;`);
+  }
+
   insert(phone) {
     return this.connection.query(
       `INSERT INTO ${this.table} (constructeur, modele,ponderation_commentaire, donateur, id_emmaus_connect, info_batterie, numero_imei, processeur, sys_exploitation, taille_ecran, resolution, chargeur, operateur, couleur, localisation_id, RAM_id, Stockage_id, Antutu_id, ponderation_id, etat_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
