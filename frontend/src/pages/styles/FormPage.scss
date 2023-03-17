@@ -1,4 +1,5 @@
 .form-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +13,7 @@
 
     input,
     select {
+      max-width: 100%;
       margin-bottom: 50px;
       padding: 20px;
       box-sizing: border-box;

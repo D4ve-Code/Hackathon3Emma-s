@@ -160,7 +160,7 @@ const FormPage = () => {
               value={formData.id_emmaus_connect}
               onChange={handleChange}
             />
-            <label htmlFor="imei">Numéro IME:</label>
+            <label htmlFor="imei">Numéro IMEI:</label>
             <input
               type="number"
               name="numero_imei"
@@ -201,6 +201,14 @@ const FormPage = () => {
       case 2:
         return (
           <>
+            <h1 className="fromPage-h1">Ajout d'un téléphone par formulaire</h1>
+            {/* <img src={imageStickerAdd} alt="image d'un téléphone" /> */}
+            <p className="formPage-para">
+              Merci de remplir chacune des lignes du formulaires. Vous serez
+              guidés pas à pas.
+              <br />
+              Si vous avez des questions, n'hésitez pas à consulter la FAQ
+            </p>
             <label htmlFor="constructeur">Constructeur:</label>
             <input
               type="text"
@@ -236,7 +244,9 @@ const FormPage = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">--Sélectionnez l'état--</option>
+                <option className="form-option" value="">
+                  --Sélectionnez l'état--
+                </option>
                 {etatList.map((item, index) => (
                   <option key={index} value={item.id}>
                     {item.statut}
@@ -251,7 +261,7 @@ const FormPage = () => {
               name="chargeur"
               id="chargeur"
               value={formData.chargeur}
-              placeholder="Présence ou non d'un chargeur"
+              placeholder="Présence (1) ou non (0) d'un chargeur"
               onChange={handleChange}
             />
             <label htmlFor="operateur">Opérateur:</label>
@@ -268,6 +278,14 @@ const FormPage = () => {
       case 3:
         return (
           <>
+            <h1 className="fromPage-h1">Ajout d'un téléphone par formulaire</h1>
+            {/* <img src={imageStickerAdd} alt="image d'un téléphone" /> */}
+            <p className="formPage-para">
+              Merci de remplir chacune des lignes du formulaires. Vous serez
+              guidés pas à pas.
+              <br />
+              Si vous avez des questions, n'hésitez pas à consulter la FAQ
+            </p>
             <label htmlFor="batterie">Batterie:</label>
             <input
               type="text"
@@ -348,6 +366,14 @@ const FormPage = () => {
       case 4:
         return (
           <>
+            <h1 className="fromPage-h1">Ajout d'un téléphone par formulaire</h1>
+            {/* <img src={imageStickerAdd} alt="image d'un téléphone" /> */}
+            <p className="formPage-para">
+              Merci de remplir chacune des lignes du formulaires. Vous serez
+              guidés pas à pas.
+              <br />
+              Si vous avez des questions, n'hésitez pas à consulter la FAQ
+            </p>
             <label htmlFor="Antutu_id">
               <select
                 name="Antutu_id"
