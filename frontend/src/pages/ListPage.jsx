@@ -1,6 +1,7 @@
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import { FiSearch } from "react-icons/fi";
 import FilterListPage from "@components/FilterListPage";
+import FileCSV from "@components/FileCSV";
 
 const ListPage = () => {
   return (
@@ -211,6 +212,7 @@ const ListPage = () => {
         </div>
         <FilterListPage className="filter__list__page" />
       </div>
+      <FileCSV />
     </>
   );
 };
