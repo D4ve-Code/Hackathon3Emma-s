@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import imageStickerList from "../assets/images/materiel-partenaires.jpg";
 import FilterListPage from "@components/FilterListPage";
 
-const ListPage = ({ dataPhones }) => {
+const ListPage = ({ dataPhones, setPouletRefresh }) => {
   const [selectedBrands, setSelectedBrands] = useState(new Set());
   const [selectedEtat, setSelectedEtat] = useState(new Set());
   const [selectedCategory, setSelectedCategory] = useState(new Set());
@@ -86,7 +86,7 @@ const ListPage = ({ dataPhones }) => {
           <h2 className="listPage__title__search">Rechercher par id Emmaus</h2>{" "}
           <input
             type="number"
-            placeholder="Entrer un id à 6 chiffres"
+            placeholder="Entrer un id à 3 chiffres"
             className="listPage__input"
             value={searchId}
             onChange={(e) => setSearchId(e.target.value)}
@@ -132,7 +132,7 @@ const ListPage = ({ dataPhones }) => {
                   </tr>
                 </tbody>
               </table>
-              <Link to={"/modify/" + dataPhones.id}>
+              <Link to={"/modify/" + phone.id_emmaus_connect}>
                 <button className="btn__modif">"modifier"</button>
               </Link>
             </div>

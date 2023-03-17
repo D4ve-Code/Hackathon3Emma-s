@@ -1,22 +1,23 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import NavBarConnected from "./components/NavBarConnected";
 import ListPage from "./pages/ListPage";
-import axios from "axios";
-
+import Modify from "./components/modify";
 import "./App.scss";
 
 function App() {
   const [dataPhones, setDataPhones] = useState([]);
   const [isConnected, setIsConnected] = useState(false);
+  const [pouletRefresh, setPouletRefresh] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:5000/phones").then((response) => {
       setDataPhones(response.data);
     });
-  }, []);
+  }, [pouletRefresh]);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -36,11 +37,21 @@ function App() {
         <Route path="/" element={<Home isConnected={isConnected} />} />
         <Route
           path="/modify/:id"
-          element={<Home isConnected={isConnected} />}
+          element={
+            <Modify
+              pouletRefresh={pouletRefresh}
+              setPouletRefresh={setPouletRefresh}
+            />
+          }
         />
         <Route
           path="/listpage"
-          element={<ListPage dataPhones={dataPhones} />}
+          element={
+            <ListPage
+              dataPhones={dataPhones}
+              setPouletRefresh={setPouletRefresh}
+            />
+          }
         />
       </Routes>
     </div>

@@ -16,6 +16,8 @@ const categoryControllers = require("./controllers/categoryControllers");
 router.get("/phones", phoneControllers.browse);
 router.post("/phones", phoneControllers.add);
 
+router.get("/phones/:id", phoneControllers.read);
+
 router.get("/antutu", antutuControllers.browse);
 
 router.get("/config", configControllers.browse);
@@ -36,5 +38,6 @@ router.get("/categories", categoryControllers.browse);
 // router.post("/items", itemControllers.add);
 // router.delete("/items/:id", itemControllers.destroy);
 router.put("/phones/:id", phoneControllers.edit);
+router.put("/phonesmodi/:id", phoneControllers.modifyphone);
 
 module.exports = router;

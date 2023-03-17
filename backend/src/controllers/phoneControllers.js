@@ -12,21 +12,21 @@ const browse = (req, res) => {
     });
 };
 
-// const read = (req, res) => {
-//   models.phone
-//     .find(req.params.id)
-//     .then(([rows]) => {
-//       if (rows[0] == null) {
-//         res.sendStatus(404);
-//       } else {
-//         res.send(rows[0]);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
+const read = (req, res) => {
+  models.phone
+    .findOnePoulet(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 const edit = (req, res) => {
   const phone = req.body;
@@ -65,6 +65,21 @@ const add = (req, res) => {
       res.sendStatus(500);
     });
 };
+const modifyphone = (req, res) => {
+  const phone = req.body;
+
+  // TODO validations (length, format...)
+
+  models.phone
+    .modifyPoulet(phone)
+    .then(([result]) => {
+      res.location(`/phones/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 const destroy = (req, res) => {
   models.phone
@@ -84,8 +99,9 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  //   read,
+  read,
   edit,
   add,
   destroy,
+  modifyphone,
 };
