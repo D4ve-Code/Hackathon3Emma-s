@@ -1,116 +1,159 @@
 .listPage__container {
-    width: 100vw;
-    height: 85vh;
+  width: 99.7vw;
 
-    .listPage__container__title{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        top: 80px;
+  .listPage__container__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 80px;
+    font-family: $fontTitre;
+  }
+
+  .listPage__container__image {
+    position: relative;
+    width: 300px;
+    top: 40px;
+    left: 30px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+    }
+  }
+  .listPage__search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .listPage__title__search {
+      font-family: $fontTexte;
+    }
+
+    .listPage__input {
+      width: 300px;
+      height: 40px;
+      background-color: $white;
+      border-radius: 20px;
+      border: 1px solid $green;
+      padding: 10px;
+      font-family: $fontTexte;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: $green;
+    }
+    .btn_seacrh {
+      position: relative;
+      left: -50px;
+    }
+  }
+  .listPage__container__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    left: 290px;
+    top: 80px;
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    width: 83%;
+
+    .table {
+      width: 90%;
+      border-collapse: separate;
+      overflow: hidden;
+      font-family: $fontTexte;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-align: center;
+      position: relative;
+
+      tr {
+        border: solid 2px $red;
+      }
+
+      th {
+        background-color: $green;
+        color: $white;
+        border: solid 2px $green;
         font-family: $fontTitre;
+        max-width: 145px;
+        min-width: 145px;
+      }
+      td {
+        border: solid 2px $green;
+        color: $black;
+        font-family: $fontTexte;
+        max-width: 145px;
+        min-width: 145px;
+      }
     }
-
-    .listPage__container__image{
-        position: relative;
-        width: 300px;
-        height: auto;
-        top: 40px;
-        left: 30px;
-        
-        img{
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-        }
+    .btn__modif {
+      background-color: $red;
+      color: $white;
+      border: none;
+      border-radius: 20px;
+      padding: 5px;
+      font-family: $fontTexte;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      position: relative;
+      top: -40px;
+      left: 94%;
+      cursor: pointer;
     }
-    .listPage__search {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-
-        .listPage__title__search {
-            font-family: $fontTexte;
+  }
+  .faq {
+    background-color: #f7f7f7;
+    height: 51vh;
+    position: relative;
+    z-index: 1;
+    bottom: 200px;
+    .faq_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding-top: 20px;
+      h2 {
+        font-family: $fontTitre;
+        color: $black;
+        span {
+          color: $green;
+          font-size: 40px;
         }
-
-        .listPage__input {
-            width: 300px;
-            height: 40px;
-            background-color: $white;
-            border-radius: 20px;
-            border: 1px solid $green;
-            padding: 10px;
-            font-family: $fontTexte;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: $green;
-        }
-        .btn_seacrh {
-            position: relative;
-            left: -50px;            
-        }
+      }
+      .faq_arrow {
+        scale: 2.5;
+        color: $green;
+      }
+      .faq_arrow:hover {
+        color: $red;
+      }
     }
-    .listPage__container__list {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        flex-direction: column;
-        position: relative;
-        left: 290px;
-        top: 80px;
-        min-height: 400px;
-        max-height: 400px;
-        overflow-y: auto;
-        width: 83%;
-
-        .table {
-            width: 90%;
-            border-collapse: separate;
-            overflow: hidden;
-            font-family: $fontTexte;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            text-align: center;
-            position: relative;
-
-            tr {                
-                border: solid 2px $red;
-            }
-
-            th {
-                background-color: $green;
-                color: $white;
-                border: solid 2px $green;
-                font-family: $fontTitre;
-                max-width: 145px;
-                min-width: 145px;
-            }
-            td {
-                border: solid 2px $green;
-                color: $black;
-                font-family: $fontTexte;
-                max-width: 145px;
-                min-width: 145px;
-            }
-
-            
-            
+    .faq_infos {
+      @include flex;
+      flex-direction: column;
+      height: 100px;
+      padding-top: 250px;
+      .video_faq {
+        width: 600px;
+        height: 600px;
+      }
+      p {
+        padding: 20px 0;
+        font-family: $fontTexte;
+        font-size: 24px;
+        color: $black;
+        span {
+          color: $blue;
+          font: bold;
+          font-size: 30px;
         }
-        .btn__modif {
-            background-color: $red;
-            color: $white;
-            border: none;
-            border-radius: 20px;
-            padding: 5px;
-            font-family: $fontTexte;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            position: relative;
-            top: -40px;
-            left: 94%;
-            cursor: pointer;
-        }
+      }
     }
-
+  }
 }
