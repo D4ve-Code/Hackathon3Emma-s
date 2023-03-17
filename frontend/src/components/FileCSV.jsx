@@ -6,7 +6,7 @@ function FileCSV() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/phones").then((res) => {
+    axios.get("http://localhost:5000/export").then((res) => {
       setData(res.data);
     });
   }, []);

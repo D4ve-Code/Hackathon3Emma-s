@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import NavBarConnected from "./components/NavBarConnected";
 import ListPage from "./pages/ListPage";
+import FormPage from "./pages/FormPage";
 import axios from "axios";
 
 import "./App.scss";
@@ -38,6 +39,7 @@ function App() {
           path="/listpage"
           element={<ListPage dataPhones={dataPhones} />}
         />
+        <Route path="/formpage" element={<FormPage />} />
       </Routes>
     </div>
   );

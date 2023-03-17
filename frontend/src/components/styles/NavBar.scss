@@ -37,7 +37,7 @@
         background: transparent;
         border: none;
         color: $white;
-        font-size: 0.9rem;
+        font-size: 1.4rem;
         font-weight: bold;
         cursor: pointer;
       }
@@ -52,8 +52,11 @@
   position: relative;
   top: 10px;
   left: 70px;
-  width: 200px;
   scale: 1;
+
+  .navbar-logo {
+    width: 15rem;
+  }
 
   p {
     font-size: 0.8rem;

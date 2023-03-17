@@ -14,6 +14,7 @@ const categoryControllers = require("./controllers/categoryControllers");
 
 // routes //
 router.get("/phones", phoneControllers.browse);
+router.get("/export", phoneControllers.browse2);
 router.post("/phones", phoneControllers.add);
 
 router.get("/antutu", antutuControllers.browse);

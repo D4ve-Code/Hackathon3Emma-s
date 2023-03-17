@@ -11,6 +11,17 @@ const browse = (req, res) => {
       res.sendStatus(500);
     });
 };
+const browse2 = (req, res) => {
+  models.phone
+    .findAllExport()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 // const read = (req, res) => {
 //   models.phone
@@ -84,6 +95,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  browse2,
   //   read,
   edit,
   add,

@@ -176,6 +176,7 @@ CREATE TABLE `phone` (
   `categorie_id` int NOT NULL,
   `etat_id` int NOT NULL,
   PRIMARY KEY (`id`,`localisation_id`,`RAM_id`,`Stockage_id`,`Antutu_id`,`ponderation_id`,`categorie_id`,`etat_id`),
+  UNIQUE KEY `id_emmaus_connect_UNIQUE` (`id_emmaus_connect`),
   KEY `fk_phone_localisation_idx` (`localisation_id`),
   KEY `fk_phone_RAM1_idx` (`RAM_id`),
   KEY `fk_phone_Stockage1_idx` (`Stockage_id`),
@@ -189,7 +190,7 @@ CREATE TABLE `phone` (
   CONSTRAINT `fk_phone_ponderation1` FOREIGN KEY (`ponderation_id`) REFERENCES `ponderation` (`id`),
   CONSTRAINT `fk_phone_RAM1` FOREIGN KEY (`RAM_id`) REFERENCES `ram` (`id`),
   CONSTRAINT `fk_phone_Stockage1` FOREIGN KEY (`Stockage_id`) REFERENCES `stockage` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +199,7 @@ CREATE TABLE `phone` (
 
 LOCK TABLES `phone` WRITE;
 /*!40000 ALTER TABLE `phone` DISABLE KEYS */;
-INSERT INTO `phone` VALUES (1,'SAMSUNG','Galaxy A70','text',64.5,'moi','111','text','111','1','android','4','17',1,'unlock','blanc',1,2,13,2,2,5,5),(4,'APPLE','Iphone 8','11',246.05,'moi','112','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,4,4,9,4),(5,'APPLE','Iphone 8','11',255,'moi','114','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,3,5,8,4),(6,'APPLE','Iphone 8','11',236.7,'moi','115','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,3,7,4),(7,'APPLE','Iphone 8','11',127.5,'moi','116','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,3,2,6,4),(8,'APPLE','Iphone 8','11',249.85,'moi','116','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,4,7,4),(9,'APPLE','Iphone 8','11',249.85,'moi','116','text','555','text','IOS','4','18mp',0,'unlocked','silver',4,3,11,5,4,7,4);
+INSERT INTO `phone` VALUES (1,'SAMSUNG','Galaxy A70','écran cassé',64.5,'Marc','111','RAS','11111111111111111','1','android','4','17',1,'unlock','blanc',1,2,13,2,2,5,5),(4,'APPLE','Iphone 8','RAS',131.1,'Amalia','112','faible','55555555555555555','text','IOS','4','18mp',0,'unlocked','silver',2,3,7,4,4,6,3),(5,'NOKIA','3210','rayures sur écran',94,'Amalia','114','50%','44444444444444444','text','IOS','4','18mp',0,'unlocked','silver',1,4,13,3,5,6,2),(6,'APPLE','Iphone 4','petites rayures',188.1,'Marc','115','50%','999999999999','text','IOS','4','18mp',0,'unlocked','silver',6,5,11,5,3,7,4);
 /*!40000 ALTER TABLE `phone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-16 15:34:19
+-- Dump completed on 2023-03-17 10:39:28
