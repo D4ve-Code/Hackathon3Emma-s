@@ -11,6 +11,7 @@ const ponderationControllers = require("./controllers/ponderationControllers");
 const ramControllers = require("./controllers/ramControllers");
 const stockageControllers = require("./controllers/stockageControllers");
 const categoryControllers = require("./controllers/categoryControllers");
+const qrCodeControllers = require("./controllers/qrCodeControllers");
 
 // routes //
 router.get("/phones", phoneControllers.browse);
@@ -31,6 +32,9 @@ router.get("/ram", ramControllers.browse);
 router.get("/stockage", stockageControllers.browse);
 
 router.get("/categories", categoryControllers.browse);
+
+router.get("/qrcodes/:emmaus_id", qrCodeControllers.browse);
+// router.put("/qrcodes/:emmaus_id", qrCodeControllers.edit);
 // router.get("/items/:id", itemControllers.read);
 // router.put("/items/:id", itemControllers.edit);
 // router.post("/items", itemControllers.add);
